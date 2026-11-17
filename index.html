@@ -49,17 +49,21 @@
     z-index: 9999;
   }
 
-  /* HERO SECTION */
+  /* =========================================
+     1. HERO SECTION (STRICTLY CENTERED)
+  ========================================= */
   .hero {
     position: relative;
+    width: 100%;
     min-height: 92vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 64px 20px 56px;
-    background: radial-gradient(circle at 50% 25%, rgba(158, 27, 27, 0.35) 0%, rgba(229, 193, 123, 0.08) 35%, rgba(7, 7, 8, 1) 75%);
+    padding: 72px 20px 64px;
+    margin: 0 auto;
+    background: radial-gradient(circle at 50% 25%, rgba(158, 27, 27, 0.38) 0%, rgba(229, 193, 123, 0.08) 38%, rgba(7, 7, 8, 1) 76%);
     overflow: hidden;
   }
 
@@ -68,9 +72,9 @@
     top: -10%;
     left: 50%;
     transform: translateX(-50%);
-    width: 600px;
-    height: 750px;
-    background: conic-gradient(from 165deg at 50% 0%, transparent 0deg, rgba(229, 193, 123, 0.14) 15deg, transparent 30deg);
+    width: 650px;
+    height: 800px;
+    background: conic-gradient(from 165deg at 50% 0%, transparent 0deg, rgba(229, 193, 123, 0.15) 15deg, transparent 30deg);
     pointer-events: none;
     animation: swayBeam 6s ease-in-out infinite alternate;
   }
@@ -83,6 +87,7 @@
   .hero-badge {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
     border: 1px solid rgba(229, 193, 123, 0.5);
     background: rgba(229, 193, 123, 0.1);
@@ -92,18 +97,15 @@
     font-size: 0.88rem;
     font-weight: 700;
     letter-spacing: 0.08em;
-    margin-bottom: 24px;
+    margin: 0 auto 20px;
     z-index: 2;
   }
 
-  .hero-en {
-    font-family: 'Playfair Display', serif;
-    color: var(--gold);
+  .hero-project-title {
     font-size: 1.05rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    margin-bottom: 12px;
-    opacity: 0.9;
+    font-weight: 700;
+    color: var(--gold);
+    margin: 0 auto 12px;
     z-index: 2;
   }
 
@@ -112,7 +114,9 @@
     font-weight: 900;
     line-height: 1.2;
     letter-spacing: -0.03em;
-    margin-bottom: 20px;
+    margin: 0 auto 20px;
+    max-width: 820px;
+    word-break: keep-all;
     z-index: 2;
   }
 
@@ -122,20 +126,20 @@
   }
 
   .hero-sub {
-    max-width: 580px;
+    max-width: 620px;
     color: #d1d5db;
-    font-size: clamp(1rem, 2vw, 1.2rem);
-    margin-bottom: 36px;
-    z-index: 2;
+    font-size: clamp(1rem, 2vw, 1.18rem);
+    margin: 0 auto 34px;
     word-break: keep-all;
+    z-index: 2;
   }
 
-  /* Hero 10-Won Office Door & Chair Visual */
-  .hero-office-visual {
+  /* Hero Visual: 10원 오피스 도어 & CEO 오피스 체어 일러스트 */
+  .stage-office-wrap {
     position: relative;
-    width: 190px;
-    height: 185px;
-    margin: 0 auto 36px;
+    width: 240px;
+    height: 175px;
+    margin: 0 auto 32px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -144,89 +148,22 @@
 
   .stage-glow {
     position: absolute;
-    width: 180px;
-    height: 180px;
+    width: 190px;
+    height: 190px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(229, 193, 123, 0.35) 0%, transparent 70%);
-    animation: pulseGlow 2.5s infinite ease-in-out;
+    background: radial-gradient(circle, rgba(229, 193, 123, 0.35) 0%, rgba(158, 27, 27, 0.15) 45%, transparent 72%);
+    animation: pulseGlow 2.6s infinite ease-in-out;
   }
 
   @keyframes pulseGlow {
-    0%, 100% { transform: scale(0.95); opacity: 0.7; }
-    50% { transform: scale(1.1); opacity: 1; }
-  }
-
-  .hero-door-frame {
-    position: relative;
-    width: 112px;
-    height: 164px;
-    border: 2.5px solid var(--gold);
-    border-bottom: none;
-    border-radius: 10px 10px 0 0;
-    background: radial-gradient(circle at 50% 45%, rgba(254, 240, 138, 0.28), rgba(158, 27, 27, 0.45));
-    box-shadow: 0 0 35px rgba(229, 193, 123, 0.28);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 14px;
-  }
-
-  .hero-door-frame::after {
-    content: "";
-    position: absolute;
-    bottom: -4px;
-    left: -14px;
-    right: -14px;
-    height: 4px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  }
-
-  .hero-room-sign {
-    background: #140c0c;
-    border: 1.5px solid var(--gold);
-    color: var(--gold-light);
-    font-size: 0.76rem;
-    font-weight: 900;
-    letter-spacing: 0.08em;
-    padding: 3px 12px;
-    border-radius: 4px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
-    margin-bottom: 10px;
-  }
-
-  .hero-door-panel {
-    position: absolute;
-    inset: 3px 3px 0 3px;
-    border-radius: 7px 7px 0 0;
-    background: linear-gradient(160deg, #8b1616 0%, #450a0a 100%);
-    border-right: 2px solid rgba(229, 193, 123, 0.7);
-    transform-origin: left center;
-    transform: perspective(500px) rotateY(-28deg);
-    box-shadow: 10px 0 22px rgba(0, 0, 0, 0.65);
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding-right: 10px;
-  }
-
-  .hero-door-knob {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--gold-light);
-    box-shadow: 0 0 8px var(--gold);
-  }
-
-  .hero-chair-inside {
-    position: relative;
-    z-index: 2;
-    margin-top: 18px;
-    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.8));
+    0%, 100% { transform: scale(0.95); opacity: 0.75; }
+    50% { transform: scale(1.08); opacity: 1; }
   }
 
   .cta-hero {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
     background: linear-gradient(135deg, var(--velvet-bright), var(--velvet-red));
     color: #fff;
@@ -234,8 +171,9 @@
     font-weight: 800;
     font-size: 1.15rem;
     padding: 18px 36px;
+    margin: 0 auto;
     border-radius: 9999px;
-    border: 1px solid rgba(229, 193, 123, 0.6);
+    border: 1px solid rgba(229, 193, 123, 0.65);
     box-shadow: 0 10px 30px rgba(185, 28, 28, 0.5);
     transition: all 0.25s ease;
     z-index: 2;
@@ -243,71 +181,67 @@
 
   .cta-hero:hover {
     transform: translateY(-3px);
-    box-shadow: 0 15px 40px rgba(229, 193, 123, 0.35);
+    box-shadow: 0 15px 40px rgba(229, 193, 123, 0.38);
   }
 
-  /* URGENT DEADLINE CLOCK BAR (BELOW HERO) */
-  .deadline-banner {
-    background: linear-gradient(90deg, #120909 0%, #2a0d0d 50%, #120909 100%);
+  /* =========================================
+     2. HERO 직후 긴박한 마감 시계 배너 (COUNTDOWN BAR)
+  ========================================= */
+  .deadline-banner-wrap {
+    position: relative;
+    width: 100%;
+    z-index: 10;
+    background: linear-gradient(90deg, #12090a 0%, #240c0e 50%, #12090a 100%);
     border-top: 1px solid rgba(229, 193, 123, 0.35);
     border-bottom: 1px solid rgba(229, 193, 123, 0.35);
-    padding: 22px 20px;
-    position: relative;
-    z-index: 5;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.75);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.85);
+    padding: 20px;
   }
 
   .deadline-banner-inner {
-    max-width: 920px;
+    max-width: 960px;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
-    gap: 16px 28px;
-    text-align: center;
+    justify-content: space-between;
+    gap: 16px;
   }
 
-  .deadline-badge {
-    display: inline-flex;
+  .deadline-left {
+    display: flex;
     align-items: center;
-    gap: 8px;
-    background: rgba(220, 38, 38, 0.2);
-    border: 1px solid rgba(248, 113, 113, 0.5);
-    color: #fca5a5;
-    font-size: 0.85rem;
-    font-weight: 800;
-    padding: 6px 14px;
-    border-radius: 9999px;
-    letter-spacing: 0.03em;
+    gap: 12px;
   }
 
-  .live-dot {
-    width: 8px;
-    height: 8px;
+  .live-pulse-dot {
+    width: 11px;
+    height: 11px;
     border-radius: 50%;
-    background: #ef4444;
-    box-shadow: 0 0 10px #ef4444;
-    animation: blinkDot 1s infinite alternate;
+    background-color: #ef4444;
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.75);
+    animation: livePulse 1.5s infinite;
+    flex-shrink: 0;
   }
 
-  @keyframes blinkDot {
-    from { opacity: 0.35; transform: scale(0.85); }
-    to { opacity: 1; transform: scale(1.2); }
+  @keyframes livePulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.75); }
+    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
   }
 
-  .deadline-copy {
+  .deadline-title {
     font-size: 1rem;
     font-weight: 700;
     color: #f3f4f6;
   }
 
-  .deadline-copy strong {
+  .deadline-title strong {
     color: var(--gold);
   }
 
-  .clock-boxes {
-    display: inline-flex;
+  .deadline-center {
+    display: flex;
     align-items: center;
     gap: 8px;
   }
@@ -315,41 +249,68 @@
   .clock-unit {
     background: #09090b;
     border: 1px solid rgba(229, 193, 123, 0.45);
-    border-radius: 10px;
-    padding: 8px 12px;
-    min-width: 58px;
+    border-radius: 8px;
+    padding: 6px 12px;
+    min-width: 62px;
     text-align: center;
     box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
   }
 
-  .clock-unit .num {
+  .clock-num {
     display: block;
-    font-size: 1.35rem;
+    font-size: 1.45rem;
     font-weight: 900;
-    color: var(--gold-light);
     font-variant-numeric: tabular-nums;
+    color: #ffffff;
     line-height: 1.1;
   }
 
-  .clock-unit .unit-label {
+  .clock-label {
     display: block;
     font-size: 0.65rem;
     font-weight: 700;
-    color: #9ca3af;
-    margin-top: 2px;
+    color: var(--gold);
     letter-spacing: 0.08em;
+    margin-top: 2px;
   }
 
   .clock-sep {
     font-size: 1.3rem;
     font-weight: 900;
     color: var(--gold);
-    animation: blinkDot 1s infinite alternate;
+    animation: blinkSep 1s infinite;
   }
 
-  /* INTERACTIVE STAGE SECTION */
+  @keyframes blinkSep {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .remaining-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(220, 38, 38, 0.22);
+    border: 1px solid rgba(248, 113, 113, 0.55);
+    color: #fecaca;
+    padding: 8px 14px;
+    border-radius: 9999px;
+    font-size: 0.86rem;
+    font-weight: 700;
+  }
+
+  .remaining-badge strong {
+    color: var(--gold-light);
+    font-weight: 900;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* =========================================
+     3. INTERACTIVE OFFICE DOOR & CHAIR SECTION
+  ========================================= */
   .stage-section {
-    max-width: 900px;
+    max-width: 960px;
     margin: 0 auto;
     padding: 84px 20px;
     text-align: center;
@@ -358,9 +319,10 @@
   .sec-tag {
     color: var(--gold);
     font-weight: 700;
-    font-size: 0.9rem;
-    letter-spacing: 0.15em;
+    font-size: 0.88rem;
+    letter-spacing: 0.18em;
     margin-bottom: 10px;
+    text-transform: uppercase;
   }
 
   .sec-title {
@@ -372,199 +334,175 @@
 
   .sec-desc {
     color: var(--text-gray);
-    margin-bottom: 48px;
+    margin-bottom: 44px;
     font-size: 1.05rem;
     word-break: keep-all;
   }
 
-  /* Office Corridor Stage */
-  .theater-stage {
-    background: linear-gradient(180deg, #131316 0%, #0a0a0c 100%);
-    border: 1px solid #26262b;
+  .office-stage {
+    background: linear-gradient(180deg, #131317 0%, #09090b 100%);
+    border: 1px solid #27272d;
     border-radius: 24px;
-    padding: 48px 24px;
+    padding: 44px 24px 36px;
     position: relative;
-    box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.9);
+    box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.92), 0 20px 50px rgba(0, 0, 0, 0.6);
   }
 
-  .screen-arc {
-    width: 72%;
-    height: 12px;
-    margin: 0 auto 48px;
+  .corridor-header {
+    width: 76%;
+    margin: 0 auto 42px;
+    padding-top: 12px;
     border-top: 3px solid rgba(229, 193, 123, 0.45);
     border-radius: 50% 50% 0 0 / 100% 100% 0 0;
-    box-shadow: 0 -10px 25px rgba(229, 193, 123, 0.18);
-    position: relative;
-  }
-
-  .screen-arc::after {
-    content: "10WON PRIVATE OFFICE SUITE";
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
+    box-shadow: 0 -10px 25px rgba(229, 193, 123, 0.14);
     font-size: 0.72rem;
+    font-weight: 700;
     letter-spacing: 0.28em;
     color: rgba(229, 193, 123, 0.65);
-    white-space: nowrap;
   }
 
-  .seats-grid {
+  .rooms-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 22px;
-    max-width: 680px;
+    gap: 20px;
+    max-width: 780px;
     margin: 0 auto;
   }
 
-  .seat-btn {
-    background: #16161a;
+  .room-btn {
+    background: linear-gradient(180deg, #1a1a1f 0%, #131316 100%);
     border: 1px solid #2e2e36;
     border-radius: 18px;
-    padding: 20px 14px 18px;
+    padding: 24px 14px 22px;
     cursor: pointer;
-    transition: all 0.28s ease;
+    transition: all 0.28s cubic-bezier(0.22, 1, 0.36, 1);
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 12px;
     position: relative;
     overflow: hidden;
+    color: inherit;
   }
 
-  .office-unit-visual {
-    position: relative;
-    width: 86px;
-    height: 106px;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-  }
-
-  .door-frame-mini {
-    position: relative;
-    width: 66px;
-    height: 98px;
-    border: 2px solid rgba(229, 193, 123, 0.55);
-    border-bottom: 2px solid rgba(229, 193, 123, 0.3);
-    border-radius: 7px 7px 2px 2px;
-    background: radial-gradient(circle at 50% 55%, rgba(229, 193, 123, 0.2), rgba(20, 14, 14, 0.95));
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-    padding-bottom: 6px;
-    transition: all 0.3s ease;
-  }
-
-  .door-plate-10won {
-    position: absolute;
-    top: -10px;
-    background: #1a1212;
-    border: 1px solid var(--gold);
-    color: var(--gold);
-    font-size: 0.64rem;
-    font-weight: 900;
-    padding: 1px 7px;
-    border-radius: 4px;
-    letter-spacing: 0.04em;
-    z-index: 4;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
-  }
-
-  .door-leaf-mini {
-    position: absolute;
-    inset: 2px;
-    border-radius: 5px 5px 0 0;
-    background: linear-gradient(155deg, #6b1414 0%, #330909 100%);
-    border-right: 1.5px solid rgba(229, 193, 123, 0.5);
-    transform-origin: left center;
-    transform: perspective(360px) rotateY(-12deg);
-    transition: transform 0.35s ease, background 0.35s ease;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding-right: 6px;
-  }
-
-  .door-leaf-mini::after {
+  .room-btn::before {
     content: "";
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: var(--gold);
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 15%, rgba(229, 193, 123, 0.22), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.28s ease;
+    pointer-events: none;
   }
 
-  .office-chair-svg {
-    width: 44px;
-    height: 44px;
-    z-index: 1;
+  .room-btn:hover:not(:disabled),
+  .room-btn.scanning,
+  .room-btn.winner {
+    border-color: var(--gold);
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(229, 193, 123, 0.2);
+  }
+
+  .room-btn:hover:not(:disabled)::before,
+  .room-btn.scanning::before,
+  .room-btn.winner::before {
+    opacity: 1;
+  }
+
+  .room-btn.scanning {
+    background: linear-gradient(180deg, #2b2114 0%, #1a1510 100%);
+    box-shadow: 0 0 32px rgba(229, 193, 123, 0.55);
+    transform: scale(1.03);
+  }
+
+  .room-btn.winner {
+    background: linear-gradient(155deg, #7f1d1d 0%, #3b0a0a 100%);
+    box-shadow: 0 0 38px rgba(229, 193, 123, 0.72);
+  }
+
+  .office-unit-svg {
+    width: 96px;
+    height: 104px;
+    overflow: visible;
     transition: transform 0.3s ease;
   }
 
-  .seat-btn:hover:not(:disabled) {
-    border-color: var(--gold);
-    transform: translateY(-5px);
-    background: #211919;
-    box-shadow: 0 12px 28px rgba(229, 193, 123, 0.18);
+  .door-leaf {
+    transform-origin: 24px 50px;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), fill 0.3s ease;
   }
 
-  .seat-btn:hover:not(:disabled) .door-leaf-mini,
-  .seat-btn.scanning .door-leaf-mini,
-  .seat-btn.winner .door-leaf-mini {
-    transform: perspective(360px) rotateY(-58deg);
-    background: linear-gradient(155deg, #b91c1c 0%, #5c0f0f 100%);
+  .door-inner-glow {
+    opacity: 0.15;
+    transition: opacity 0.35s ease;
   }
 
-  .seat-btn:hover:not(:disabled) .door-frame-mini,
-  .seat-btn.scanning .door-frame-mini,
-  .seat-btn.winner .door-frame-mini {
-    border-color: var(--gold-light);
-    background: radial-gradient(circle at 50% 50%, rgba(254, 240, 138, 0.45), rgba(158, 27, 27, 0.35));
-    box-shadow: 0 0 20px rgba(229, 193, 123, 0.35);
+  .chair-group {
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
-  .seat-btn:hover:not(:disabled) .office-chair-svg,
-  .seat-btn.scanning .office-chair-svg,
-  .seat-btn.winner .office-chair-svg {
-    transform: scale(1.08);
+  .room-btn:hover:not(:disabled) .door-leaf,
+  .room-btn.scanning .door-leaf,
+  .room-btn.winner .door-leaf {
+    transform: perspective(180px) rotateY(-26deg);
+    fill: #9e1b1b;
   }
 
-  .seat-btn.scanning {
-    border-color: var(--gold);
-    background: rgba(229, 193, 123, 0.22);
-    box-shadow: 0 0 30px rgba(229, 193, 123, 0.6);
-    transform: scale(1.04);
+  .room-btn:hover:not(:disabled) .door-inner-glow,
+  .room-btn.scanning .door-inner-glow,
+  .room-btn.winner .door-inner-glow {
+    opacity: 0.95;
   }
 
-  .seat-btn.winner {
-    border-color: var(--gold-light);
-    background: linear-gradient(145deg, #881616, #450a0a);
-    box-shadow: 0 0 35px rgba(229, 193, 123, 0.75);
+  .room-btn:hover:not(:disabled) .chair-group,
+  .room-btn.scanning .chair-group,
+  .room-btn.winner .chair-group {
+    transform: translateY(-2px) scale(1.04);
   }
 
-  .seat-label {
-    font-size: 1.08rem;
+  .room-badge-top {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: var(--gold);
+    background: rgba(229, 193, 123, 0.12);
+    border: 1px solid rgba(229, 193, 123, 0.35);
+    padding: 3px 10px;
+    border-radius: 9999px;
+  }
+
+  .room-label {
+    font-size: 1.25rem;
     font-weight: 900;
     color: #f3f4f6;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.06em;
     font-variant-numeric: tabular-nums;
+  }
+
+  .room-btn.winner .room-label,
+  .room-btn:hover .room-label {
+    color: var(--gold-light);
   }
 
   .status-banner {
     margin-top: 32px;
     min-height: 32px;
     font-size: 1.05rem;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--gold);
   }
 
-  /* RESULT & TICKET + LEAD FORM SECTION */
+  /* =========================================
+     4. RESULT & VINTAGE TICKET + LEAD FORM
+  ========================================= */
   .result-section {
     display: none;
     max-width: 760px;
-    margin: 0 auto 80px;
+    margin: 0 auto 84px;
     padding: 0 20px;
     animation: fadeUp 0.7s ease forwards;
   }
@@ -576,7 +514,7 @@
 
   .result-card {
     background: linear-gradient(180deg, #1a1515 0%, #111114 100%);
-    border: 1px solid rgba(229, 193, 123, 0.4);
+    border: 1px solid rgba(229, 193, 123, 0.45);
     border-radius: 24px;
     padding: 44px 32px;
     text-align: center;
@@ -596,7 +534,7 @@
   }
 
   .vintage-ticket {
-    max-width: 520px;
+    max-width: 540px;
     margin: 32px auto;
     background: var(--ticket-paper);
     color: #1c1917;
@@ -646,7 +584,7 @@
     letter-spacing: 0.1em;
     border-bottom: 1px solid #9e1b1b;
     padding-bottom: 6px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
   }
 
   .ticket-title {
@@ -655,14 +593,7 @@
     color: #7f1d1d;
     line-height: 1.15;
     letter-spacing: -0.02em;
-    margin-bottom: 6px;
-  }
-
-  .ticket-sub {
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: #44403c;
-    margin-bottom: 14px;
+    margin-bottom: 16px;
   }
 
   .ticket-meta {
@@ -684,7 +615,7 @@
   .ticket-meta div strong {
     color: #1c1917;
     font-weight: 800;
-    font-size: 0.82rem;
+    font-size: 0.8rem;
   }
 
   .ticket-stub {
@@ -700,11 +631,11 @@
   }
 
   .stub-vip {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.3rem;
+    font-family: 'Pretendard', sans-serif;
+    font-size: 1.05rem;
     font-weight: 900;
     color: var(--gold);
-    letter-spacing: 0.1em;
+    letter-spacing: 0.06em;
   }
 
   .stub-no {
@@ -866,150 +797,160 @@
     cursor: not-allowed;
   }
 
-  /* 10 YEARS MOMENTS SECTION */
-  .moments-section {
-    max-width: 1040px;
+  /* =========================================
+     5. 10 YEARS ARCHIVE · CINEMA FILM STRIP SECTION
+  ========================================= */
+  .archive-section {
+    max-width: 1120px;
+    width: 100%;
     margin: 0 auto;
-    padding: 84px 20px 64px;
+    padding: 76px 20px 96px;
+    text-align: center;
+    border-top: 1px solid #1a1a20;
+  }
+
+  .archive-section .sec-title {
+    margin-bottom: 40px;
+  }
+
+  .film-strip-frame {
+    width: 100%;
+    background-color: #101013;
+    border: 1px solid #26262e;
+    border-radius: 14px;
+    padding: 0;
+    position: relative;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.85);
+  }
+
+  .film-perforations {
+    height: 30px;
+    width: 100%;
+    background-color: #131318;
+    background-image: repeating-linear-gradient(
+      90deg,
+      transparent 0px,
+      transparent 16px,
+      #2b2b34 16px,
+      #2b2b34 36px,
+      transparent 36px,
+      transparent 52px
+    );
+    background-size: 52px 13px;
+    background-repeat: repeat-x;
+    background-position: 0 center;
+    animation: sprocketRoll 1.4s linear infinite;
+    will-change: background-position;
+  }
+
+  .film-perforations.top {
+    border-bottom: 1px solid #222229;
+    border-radius: 13px 13px 0 0;
+  }
+
+  .film-perforations.bottom {
+    border-top: 1px solid #222229;
+    border-radius: 0 0 13px 13px;
+  }
+
+  @keyframes sprocketRoll {
+    0% { background-position-x: 0px; }
+    100% { background-position-x: -52px; }
+  }
+
+  .film-scenes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    padding: 32px 24px;
+    text-align: left;
+    align-items: stretch;
+  }
+
+  .scene-card {
+    background: #141418;
+    border: 1px solid #26262e;
+    border-radius: 12px;
+    padding: 26px 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-width: 0;
+    height: auto;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+
+  .scene-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(229, 193, 123, 0.45);
+  }
+
+  .scene-card.special {
+    background: linear-gradient(145deg, rgba(158, 27, 27, 0.28) 0%, rgba(28, 20, 18, 0.95) 60%, rgba(229, 193, 123, 0.12) 100%);
+    border: 1.5px solid var(--gold);
+    box-shadow: 0 0 30px rgba(229, 193, 123, 0.14);
+  }
+
+  .scene-meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.06em;
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .scene-card.special .scene-meta {
+    border-bottom-color: rgba(229, 193, 123, 0.25);
+  }
+
+  .scene-title {
+    font-size: clamp(1.22rem, 1.8vw, 1.45rem);
+    font-weight: 900;
+    color: #ffffff;
+    line-height: 1.3;
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+    word-break: keep-all;
+  }
+
+  .scene-title span {
+    color: var(--gold);
+  }
+
+  .scene-desc {
+    font-size: 0.92rem;
+    color: #b4b8c2;
+    line-height: 1.65;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+
+  .scene-card.special .scene-desc {
+    color: #e5e7eb;
+  }
+
+  /* =========================================
+     6. TRUST & FOOTER
+  ========================================= */
+  .trust-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
     text-align: center;
     border-top: 1px solid #1f1f24;
   }
 
-  .moments-intro {
-    max-width: 600px;
-    margin: 0 auto 48px;
-    color: var(--text-gray);
-    font-size: 1.05rem;
-    word-break: keep-all;
-  }
-
-  .film-reel-container {
-    position: relative;
-    background: #101013;
-    border: 1px solid rgba(229, 193, 123, 0.28);
-    border-radius: 20px;
-    padding: 36px 0;
-    overflow: hidden;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85);
-  }
-
-  .film-strip-bar {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 16px;
-    overflow: hidden;
-    pointer-events: none;
-  }
-
-  .film-strip-bar.top {
-    top: 10px;
-  }
-
-  .film-strip-bar.bottom {
-    bottom: 10px;
-  }
-
-  .film-sprocket-track {
-    width: 200%;
-    height: 100%;
-    background-image: repeating-linear-gradient(
-      90deg,
-      rgba(229, 193, 123, 0.32) 0px,
-      rgba(229, 193, 123, 0.32) 18px,
-      transparent 18px,
-      transparent 36px
-    );
-    animation: filmSprocketMove 16s linear infinite;
-    will-change: transform;
-  }
-
-  .film-strip-bar.bottom .film-sprocket-track {
-    animation-direction: reverse;
-  }
-
-  @keyframes filmSprocketMove {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-
-  .film-frames-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 20px;
-    padding: 0 24px;
-    position: relative;
-    z-index: 2;
-  }
-
-  .moment-card {
-    background: linear-gradient(180deg, #17171c 0%, #111114 100%);
-    border: 1px solid #2b2b33;
-    border-radius: 14px;
-    padding: 26px 22px;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    transition: transform 0.25s ease, border-color 0.25s ease;
-    word-break: keep-all;
-  }
-
-  .moment-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--gold);
-  }
-
-  .moment-card.highlight-card {
-    border-color: rgba(229, 193, 123, 0.65);
-    background: linear-gradient(160deg, rgba(158, 27, 27, 0.26) 0%, #141418 100%);
-    box-shadow: 0 12px 32px rgba(158, 27, 27, 0.25);
-  }
-
-  .moment-scene {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-    font-family: 'Playfair Display', serif;
-    font-size: 0.78rem;
-    font-weight: 700;
-    color: var(--gold);
-    letter-spacing: 0.08em;
-    margin-bottom: 12px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  }
-
-  .moment-title {
-    font-size: clamp(1.18rem, 2vw, 1.38rem);
-    font-weight: 900;
-    color: #ffffff;
-    margin-bottom: 12px;
-    line-height: 1.35;
-  }
-
-  .moment-title span {
-    color: var(--gold);
-  }
-
-  .moment-desc {
-    font-size: 0.92rem;
-    color: #d1d5db;
-    line-height: 1.65;
-  }
-
-  /* Trust & Footer */
-  .trust-section {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 36px 20px 80px;
-    text-align: center;
-  }
-
   .trust-quote {
     max-width: 620px;
-    margin: 0 auto 24px;
+    margin: 0 auto 28px;
     font-size: 1.05rem;
     color: #d1d5db;
     word-break: keep-all;
@@ -1068,19 +1009,23 @@
   }
 
   @media (max-width: 820px) {
-    .film-frames-grid {
+    .deadline-banner-inner {
+      flex-direction: column;
+      text-align: center;
+      justify-content: center;
+    }
+    .film-scenes-grid {
       grid-template-columns: 1fr;
-      padding: 0 18px;
+      padding: 24px 20px;
     }
   }
 
   @media (max-width: 640px) {
-    .seats-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .rooms-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
     .vintage-ticket { flex-direction: column; }
     .vintage-ticket::before, .vintage-ticket::after { display: none; }
     .ticket-main { border-right: none; border-bottom: 2px dashed #9e1b1b; }
     .result-card { padding: 32px 18px; }
-    .deadline-banner-inner { flex-direction: column; gap: 12px; }
   }
 </style>
 </head>
@@ -1092,176 +1037,249 @@
 <section class="hero">
   <div class="spotlight-beam"></div>
   <div class="hero-badge">★ 10TH ANNIVERSARY SPECIAL INVITATION ★</div>
-  <div class="hero-en">The 2026 Year-End Business Awards</div>
-  <h1>내년 사무실 월세,<br>딱 <span class="highlight">'10원'</span>만 내세요.</h1>
+  <div class="hero-project-title">10주년 주인공 찾기 프로젝트 : <10원 오피스></div>
+  <h1>내년 사무실 월세,<br>딱 <span class="highlight">10원</span>만 내세요</h1>
   <p class="hero-sub">
-    <strong>10주년 주인공 찾기 프로젝트 : <10원 오피스></strong><br>
-    12월 연말, 가장 빛나는 성장을 이룰 대표님을 위한 VIP 오피스 초대전.<br>
-    지금 스포트라이트의 주인공이 되어 1개월 10원 입주 티켓을 거머쥐세요.
+    가장 빛나는 성장을 이룰 대표님을 위한 VIP 오피스 초대전<br>
+    지금 스플 10주년의 주인공이 되어 <strong>10원 오피스 입주권</strong>을 거머쥐세요
   </p>
 
-  <!-- 10-Won Private Office Door & Chair Visual -->
-  <div class="hero-office-visual">
+  <!-- 10원 오피스 도어 & 오피스 체어 메인 비주얼 -->
+  <div class="stage-office-wrap">
     <div class="stage-glow"></div>
-    <div class="hero-door-frame">
-      <div class="hero-room-sign">10₩</div>
-      <div class="hero-door-panel">
-        <div class="hero-door-knob"></div>
-      </div>
-      <svg class="hero-chair-inside" width="54" height="58" viewBox="0 0 64 64" fill="none">
-        <rect x="20" y="6" width="24" height="24" rx="5" fill="#9e1b1b" stroke="#fef08a" stroke-width="2.2"/>
-        <rect x="16" y="32" width="32" height="8" rx="3.5" fill="#7f1d1d" stroke="#fef08a" stroke-width="2.2"/>
-        <path d="M14 23V34H18M50 23V34H46" stroke="#e5c17b" stroke-width="2.4" stroke-linecap="round"/>
-        <path d="M32 40V52M20 55H44M32 52L21 56M32 52L43 56" stroke="#fef08a" stroke-width="2.5" stroke-linecap="round"/>
-        <circle cx="20" cy="57" r="2" fill="#e5c17b"/>
-        <circle cx="32" cy="57" r="2" fill="#e5c17b"/>
-        <circle cx="44" cy="57" r="2" fill="#e5c17b"/>
-      </svg>
-    </div>
+    <svg width="160" height="150" viewBox="0 0 140 130" fill="none" aria-hidden="true">
+      <ellipse cx="70" cy="118" rx="48" ry="8" fill="rgba(229, 193, 123, 0.25)"/>
+      <rect x="34" y="10" width="72" height="104" rx="5" fill="#18181d" stroke="#e5c17b" stroke-width="2.5"/>
+      <rect x="40" y="16" width="60" height="96" rx="2" fill="url(#doorGlowGrad)"/>
+      <path d="M40 16 L84 22 V106 L40 112 Z" fill="#8f1919" stroke="#e5c17b" stroke-width="2"/>
+      <rect x="47" y="28" width="30" height="14" rx="3" fill="#121215" stroke="#e5c17b" stroke-width="1.3"/>
+      <text x="62" y="38" text-anchor="middle" fill="#fef08a" font-size="8.5" font-weight="900">10원</text>
+      <circle cx="78" cy="64" r="2.8" fill="#fef08a"/>
+      <g transform="translate(52, 54)">
+        <rect x="6" y="4" width="24" height="26" rx="6" fill="#27272f" stroke="#e5c17b" stroke-width="2"/>
+        <rect x="3" y="30" width="30" height="8" rx="3.5" fill="#3f3f46" stroke="#e5c17b" stroke-width="1.8"/>
+        <path d="M3 16 H0 V32 H4 M33 16 H36 V32 H32" stroke="#e5c17b" stroke-width="2" stroke-linecap="round"/>
+        <line x1="18" y1="38" x2="18" y2="52" stroke="#e5c17b" stroke-width="3"/>
+        <path d="M18 52 L4 60 M18 52 L32 60 M18 52 L18 61" stroke="#e5c17b" stroke-width="2.2" stroke-linecap="round"/>
+        <circle cx="4" cy="61" r="2.2" fill="#fef08a"/>
+        <circle cx="18" cy="62" r="2.2" fill="#fef08a"/>
+        <circle cx="32" cy="61" r="2.2" fill="#fef08a"/>
+      </g>
+      <defs>
+        <linearGradient id="doorGlowGrad" x1="70" y1="16" x2="70" y2="112" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#fef08a" stop-opacity="0.85"/>
+          <stop offset="100%" stop-color="#e5c17b" stop-opacity="0.25"/>
+        </linearGradient>
+      </defs>
+    </svg>
   </div>
 
   <a href="#interactive-stage" class="cta-hero">
-    내 10원 오피스 호실 선택하기 ↓
+    10원 오피스 입주권 발권하기 ↓
   </a>
 </section>
 
-<!-- URGENT DEADLINE CLOCK BAR -->
-<div class="deadline-banner" role="region" aria-label="프로모션 마감 카운트다운">
+<!-- SEC 1.5: 긴박한 마감 시계 배너 (COUNTDOWN BAR) -->
+<div class="deadline-banner-wrap" aria-label="선착순 혜택 마감 타이머">
   <div class="deadline-banner-inner">
-    <div class="deadline-badge">
-      <span class="live-dot"></span>
-      <span>잔여 티켓 : 3석 남음</span>
+    <div class="deadline-left">
+      <span class="live-pulse-dot"></span>
+      <div class="deadline-title">
+        오늘 <strong>10원 오피스</strong> 혜택 마감까지 남은 시간
+      </div>
     </div>
-    <div class="deadline-copy">
-      오늘 <strong>자정(24:00)</strong>이 지나면 10원 오피스 초청장이 소멸됩니다
-    </div>
-    <div class="clock-boxes" aria-live="polite">
+
+    <div class="deadline-center" role="timer" aria-live="polite">
       <div class="clock-unit">
-        <span class="num" id="hero-clock-h">00</span>
-        <span class="unit-label">HOURS</span>
+        <span class="clock-num" id="banner-hours">00</span>
+        <span class="clock-label">HRS</span>
       </div>
       <span class="clock-sep">:</span>
       <div class="clock-unit">
-        <span class="num" id="hero-clock-m">00</span>
-        <span class="unit-label">MINS</span>
+        <span class="clock-num" id="banner-minutes">00</span>
+        <span class="clock-label">MIN</span>
       </div>
       <span class="clock-sep">:</span>
       <div class="clock-unit">
-        <span class="num" id="hero-clock-s">00</span>
-        <span class="unit-label">SECS</span>
+        <span class="clock-num" id="banner-seconds">00</span>
+        <span class="clock-label">SEC</span>
       </div>
+    </div>
+
+    <div class="remaining-badge">
+      🔥 금일 배정된 10원 오피스 잔여 티켓: <strong>3석 남음</strong>
     </div>
   </div>
 </div>
 
 <!-- SEC 2: INTERACTIVE OFFICE DOOR & CHAIR SELECTION -->
 <section id="interactive-stage" class="stage-section">
-  <div class="sec-tag">STEP 01 · 10WON OFFICE SELECTION</div>
-  <h2 class="sec-title">주인공의 10원 오피스 문을 열어주세요</h2>
-  <p class="sec-desc">6개의 오피스 호실 중 핀 조명이 켜지는 문을 클릭하면 10원 입주 당첨 여부를 즉시 확인할 수 있습니다.</p>
+  <div class="sec-tag">10원 오피스 주인공 캐스팅</div>
+  <h2 class="sec-title">오피스 호실 문을 선택해 주세요</h2>
+  <p class="sec-desc">6개의 오피스 중 단 하나의 호실을 노크해주세요 ✊</p>
 
-  <div class="theater-stage">
-    <div class="screen-arc"></div>
-    <div class="seats-grid" id="seats-grid">
-      <button type="button" class="seat-btn" data-seat="101">
-        <div class="office-unit-visual">
-          <div class="door-frame-mini">
-            <span class="door-plate-10won">10₩</span>
-            <div class="door-leaf-mini"></div>
-            <svg class="office-chair-svg" viewBox="0 0 64 64" fill="none">
-              <rect x="20" y="8" width="24" height="22" rx="5" fill="#9e1b1b" stroke="#e5c17b" stroke-width="2"/>
-              <rect x="16" y="32" width="32" height="8" rx="3" fill="#7f1d1d" stroke="#e5c17b" stroke-width="2"/>
-              <path d="M14 23V33H18M50 23V33H46M32 40V51M20 55H44" stroke="#e5c17b" stroke-width="2.2" stroke-linecap="round"/>
-              <circle cx="20" cy="56" r="2" fill="#e5c17b"/><circle cx="32" cy="56" r="2" fill="#e5c17b"/><circle cx="44" cy="56" r="2" fill="#e5c17b"/>
-            </svg>
-          </div>
-        </div>
-        <span class="seat-label">101</span>
+  <div class="office-stage">
+    <div class="corridor-header">THE 10TH ANNIVERSARY · 10₩ OFFICE FLOOR</div>
+    <div class="rooms-grid" id="rooms-grid">
+      <!-- 101 -->
+      <button type="button" class="room-btn" data-room="101">
+        <span class="room-badge-top">VIP OFFICE</span>
+        <svg class="office-unit-svg" viewBox="0 0 100 108" fill="none">
+          <rect x="20" y="6" width="60" height="88" rx="4" fill="#111114" stroke="#e5c17b" stroke-width="2"/>
+          <rect class="door-inner-glow" x="24" y="10" width="52" height="82" rx="2" fill="#fef08a"/>
+          <g class="door-leaf">
+            <rect x="24" y="10" width="52" height="82" rx="2" fill="#27272f" stroke="#e5c17b" stroke-width="1.5"/>
+            <rect x="37" y="18" width="26" height="12" rx="2" fill="#121215" stroke="#e5c17b" stroke-width="1"/>
+            <text x="50" y="26.5" text-anchor="middle" fill="#e5c17b" font-size="8" font-weight="900">101</text>
+            <circle cx="69" cy="52" r="2.3" fill="#e5c17b"/>
+          </g>
+          <g class="chair-group">
+            <rect x="38" y="48" width="24" height="23" rx="5" fill="#7f1d1d" stroke="#e5c17b" stroke-width="1.8"/>
+            <rect x="35" y="70" width="30" height="7" rx="3" fill="#9e1b1b" stroke="#e5c17b" stroke-width="1.6"/>
+            <path d="M35 58 H32 V72 H36 M65 58 H68 V72 H64" stroke="#e5c17b" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="50" y1="77" x2="50" y2="89" stroke="#e5c17b" stroke-width="2.5"/>
+            <path d="M50 89 L35 96 M50 89 L65 96 M50 89 L50 97" stroke="#e5c17b" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="35" cy="97" r="2" fill="#fef08a"/>
+            <circle cx="50" cy="98" r="2" fill="#fef08a"/>
+            <circle cx="65" cy="97" r="2" fill="#fef08a"/>
+          </g>
+        </svg>
+        <span class="room-label">101</span>
       </button>
 
-      <button type="button" class="seat-btn" data-seat="102">
-        <div class="office-unit-visual">
-          <div class="door-frame-mini">
-            <span class="door-plate-10won">10₩</span>
-            <div class="door-leaf-mini"></div>
-            <svg class="office-chair-svg" viewBox="0 0 64 64" fill="none">
-              <rect x="20" y="8" width="24" height="22" rx="5" fill="#9e1b1b" stroke="#e5c17b" stroke-width="2"/>
-              <rect x="16" y="32" width="32" height="8" rx="3" fill="#7f1d1d" stroke="#e5c17b" stroke-width="2"/>
-              <path d="M14 23V33H18M50 23V33H46M32 40V51M20 55H44" stroke="#e5c17b" stroke-width="2.2" stroke-linecap="round"/>
-              <circle cx="20" cy="56" r="2" fill="#e5c17b"/><circle cx="32" cy="56" r="2" fill="#e5c17b"/><circle cx="44" cy="56" r="2" fill="#e5c17b"/>
-            </svg>
-          </div>
-        </div>
-        <span class="seat-label">102</span>
+      <!-- 102 -->
+      <button type="button" class="room-btn" data-room="102">
+        <span class="room-badge-top">VIP OFFICE</span>
+        <svg class="office-unit-svg" viewBox="0 0 100 108" fill="none">
+          <rect x="20" y="6" width="60" height="88" rx="4" fill="#111114" stroke="#e5c17b" stroke-width="2"/>
+          <rect class="door-inner-glow" x="24" y="10" width="52" height="82" rx="2" fill="#fef08a"/>
+          <g class="door-leaf">
+            <rect x="24" y="10" width="52" height="82" rx="2" fill="#27272f" stroke="#e5c17b" stroke-width="1.5"/>
+            <rect x="37" y="18" width="26" height="12" rx="2" fill="#121215" stroke="#e5c17b" stroke-width="1"/>
+            <text x="50" y="26.5" text-anchor="middle" fill="#e5c17b" font-size="8" font-weight="900">102</text>
+            <circle cx="69" cy="52" r="2.3" fill="#e5c17b"/>
+          </g>
+          <g class="chair-group">
+            <rect x="38" y="48" width="24" height="23" rx="5" fill="#7f1d1d" stroke="#e5c17b" stroke-width="1.8"/>
+            <rect x="35" y="70" width="30" height="7" rx="3" fill="#9e1b1b" stroke="#e5c17b" stroke-width="1.6"/>
+            <path d="M35 58 H32 V72 H36 M65 58 H68 V72 H64" stroke="#e5c17b" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="50" y1="77" x2="50" y2="89" stroke="#e5c17b" stroke-width="2.5"/>
+            <path d="M50 89 L35 96 M50 89 L65 96 M50 89 L50 97" stroke="#e5c17b" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="35" cy="97" r="2" fill="#fef08a"/>
+            <circle cx="50" cy="98" r="2" fill="#fef08a"/>
+            <circle cx="65" cy="97" r="2" fill="#fef08a"/>
+          </g>
+        </svg>
+        <span class="room-label">102</span>
       </button>
 
-      <button type="button" class="seat-btn" data-seat="103">
-        <div class="office-unit-visual">
-          <div class="door-frame-mini">
-            <span class="door-plate-10won">10₩</span>
-            <div class="door-leaf-mini"></div>
-            <svg class="office-chair-svg" viewBox="0 0 64 64" fill="none">
-              <rect x="20" y="8" width="24" height="22" rx="5" fill="#9e1b1b" stroke="#e5c17b" stroke-width="2"/>
-              <rect x="16" y="32" width="32" height="8" rx="3" fill="#7f1d1d" stroke="#e5c17b" stroke-width="2"/>
-              <path d="M14 23V33H18M50 23V33H46M32 40V51M20 55H44" stroke="#e5c17b" stroke-width="2.2" stroke-linecap="round"/>
-              <circle cx="20" cy="56" r="2" fill="#e5c17b"/><circle cx="32" cy="56" r="2" fill="#e5c17b"/><circle cx="44" cy="56" r="2" fill="#e5c17b"/>
-            </svg>
-          </div>
-        </div>
-        <span class="seat-label">103</span>
+      <!-- 103 -->
+      <button type="button" class="room-btn" data-room="103">
+        <span class="room-badge-top">VIP OFFICE</span>
+        <svg class="office-unit-svg" viewBox="0 0 100 108" fill="none">
+          <rect x="20" y="6" width="60" height="88" rx="4" fill="#111114" stroke="#e5c17b" stroke-width="2"/>
+          <rect class="door-inner-glow" x="24" y="10" width="52" height="82" rx="2" fill="#fef08a"/>
+          <g class="door-leaf">
+            <rect x="24" y="10" width="52" height="82" rx="2" fill="#27272f" stroke="#e5c17b" stroke-width="1.5"/>
+            <rect x="37" y="18" width="26" height="12" rx="2" fill="#121215" stroke="#e5c17b" stroke-width="1"/>
+            <text x="50" y="26.5" text-anchor="middle" fill="#e5c17b" font-size="8" font-weight="900">103</text>
+            <circle cx="69" cy="52" r="2.3" fill="#e5c17b"/>
+          </g>
+          <g class="chair-group">
+            <rect x="38" y="48" width="24" height="23" rx="5" fill="#7f1d1d" stroke="#e5c17b" stroke-width="1.8"/>
+            <rect x="35" y="70" width="30" height="7" rx="3" fill="#9e1b1b" stroke="#e5c17b" stroke-width="1.6"/>
+            <path d="M35 58 H32 V72 H36 M65 58 H68 V72 H64" stroke="#e5c17b" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="50" y1="77" x2="50" y2="89" stroke="#e5c17b" stroke-width="2.5"/>
+            <path d="M50 89 L35 96 M50 89 L65 96 M50 89 L50 97" stroke="#e5c17b" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="35" cy="97" r="2" fill="#fef08a"/>
+            <circle cx="50" cy="98" r="2" fill="#fef08a"/>
+            <circle cx="65" cy="97" r="2" fill="#fef08a"/>
+          </g>
+        </svg>
+        <span class="room-label">103</span>
       </button>
 
-      <button type="button" class="seat-btn" data-seat="107">
-        <div class="office-unit-visual">
-          <div class="door-frame-mini">
-            <span class="door-plate-10won">10₩</span>
-            <div class="door-leaf-mini"></div>
-            <svg class="office-chair-svg" viewBox="0 0 64 64" fill="none">
-              <rect x="20" y="8" width="24" height="22" rx="5" fill="#9e1b1b" stroke="#e5c17b" stroke-width="2"/>
-              <rect x="16" y="32" width="32" height="8" rx="3" fill="#7f1d1d" stroke="#e5c17b" stroke-width="2"/>
-              <path d="M14 23V33H18M50 23V33H46M32 40V51M20 55H44" stroke="#e5c17b" stroke-width="2.2" stroke-linecap="round"/>
-              <circle cx="20" cy="56" r="2" fill="#e5c17b"/><circle cx="32" cy="56" r="2" fill="#e5c17b"/><circle cx="44" cy="56" r="2" fill="#e5c17b"/>
-            </svg>
-          </div>
-        </div>
-        <span class="seat-label">107</span>
+      <!-- 107 -->
+      <button type="button" class="room-btn" data-room="107">
+        <span class="room-badge-top">VIP OFFICE</span>
+        <svg class="office-unit-svg" viewBox="0 0 100 108" fill="none">
+          <rect x="20" y="6" width="60" height="88" rx="4" fill="#111114" stroke="#e5c17b" stroke-width="2"/>
+          <rect class="door-inner-glow" x="24" y="10" width="52" height="82" rx="2" fill="#fef08a"/>
+          <g class="door-leaf">
+            <rect x="24" y="10" width="52" height="82" rx="2" fill="#27272f" stroke="#e5c17b" stroke-width="1.5"/>
+            <rect x="37" y="18" width="26" height="12" rx="2" fill="#121215" stroke="#e5c17b" stroke-width="1"/>
+            <text x="50" y="26.5" text-anchor="middle" fill="#e5c17b" font-size="8" font-weight="900">107</text>
+            <circle cx="69" cy="52" r="2.3" fill="#e5c17b"/>
+          </g>
+          <g class="chair-group">
+            <rect x="38" y="48" width="24" height="23" rx="5" fill="#7f1d1d" stroke="#e5c17b" stroke-width="1.8"/>
+            <rect x="35" y="70" width="30" height="7" rx="3" fill="#9e1b1b" stroke="#e5c17b" stroke-width="1.6"/>
+            <path d="M35 58 H32 V72 H36 M65 58 H68 V72 H64" stroke="#e5c17b" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="50" y1="77" x2="50" y2="89" stroke="#e5c17b" stroke-width="2.5"/>
+            <path d="M50 89 L35 96 M50 89 L65 96 M50 89 L50 97" stroke="#e5c17b" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="35" cy="97" r="2" fill="#fef08a"/>
+            <circle cx="50" cy="98" r="2" fill="#fef08a"/>
+            <circle cx="65" cy="97" r="2" fill="#fef08a"/>
+          </g>
+        </svg>
+        <span class="room-label">107</span>
       </button>
 
-      <button type="button" class="seat-btn" data-seat="108">
-        <div class="office-unit-visual">
-          <div class="door-frame-mini">
-            <span class="door-plate-10won">10₩</span>
-            <div class="door-leaf-mini"></div>
-            <svg class="office-chair-svg" viewBox="0 0 64 64" fill="none">
-              <rect x="20" y="8" width="24" height="22" rx="5" fill="#9e1b1b" stroke="#e5c17b" stroke-width="2"/>
-              <rect x="16" y="32" width="32" height="8" rx="3" fill="#7f1d1d" stroke="#e5c17b" stroke-width="2"/>
-              <path d="M14 23V33H18M50 23V33H46M32 40V51M20 55H44" stroke="#e5c17b" stroke-width="2.2" stroke-linecap="round"/>
-              <circle cx="20" cy="56" r="2" fill="#e5c17b"/><circle cx="32" cy="56" r="2" fill="#e5c17b"/><circle cx="44" cy="56" r="2" fill="#e5c17b"/>
-            </svg>
-          </div>
-        </div>
-        <span class="seat-label">108</span>
+      <!-- 108 -->
+      <button type="button" class="room-btn" data-room="108">
+        <span class="room-badge-top">VIP OFFICE</span>
+        <svg class="office-unit-svg" viewBox="0 0 100 108" fill="none">
+          <rect x="20" y="6" width="60" height="88" rx="4" fill="#111114" stroke="#e5c17b" stroke-width="2"/>
+          <rect class="door-inner-glow" x="24" y="10" width="52" height="82" rx="2" fill="#fef08a"/>
+          <g class="door-leaf">
+            <rect x="24" y="10" width="52" height="82" rx="2" fill="#27272f" stroke="#e5c17b" stroke-width="1.5"/>
+            <rect x="37" y="18" width="26" height="12" rx="2" fill="#121215" stroke="#e5c17b" stroke-width="1"/>
+            <text x="50" y="26.5" text-anchor="middle" fill="#e5c17b" font-size="8" font-weight="900">108</text>
+            <circle cx="69" cy="52" r="2.3" fill="#e5c17b"/>
+          </g>
+          <g class="chair-group">
+            <rect x="38" y="48" width="24" height="23" rx="5" fill="#7f1d1d" stroke="#e5c17b" stroke-width="1.8"/>
+            <rect x="35" y="70" width="30" height="7" rx="3" fill="#9e1b1b" stroke="#e5c17b" stroke-width="1.6"/>
+            <path d="M35 58 H32 V72 H36 M65 58 H68 V72 H64" stroke="#e5c17b" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="50" y1="77" x2="50" y2="89" stroke="#e5c17b" stroke-width="2.5"/>
+            <path d="M50 89 L35 96 M50 89 L65 96 M50 89 L50 97" stroke="#e5c17b" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="35" cy="97" r="2" fill="#fef08a"/>
+            <circle cx="50" cy="98" r="2" fill="#fef08a"/>
+            <circle cx="65" cy="97" r="2" fill="#fef08a"/>
+          </g>
+        </svg>
+        <span class="room-label">108</span>
       </button>
 
-      <button type="button" class="seat-btn" data-seat="109">
-        <div class="office-unit-visual">
-          <div class="door-frame-mini">
-            <span class="door-plate-10won">10₩</span>
-            <div class="door-leaf-mini"></div>
-            <svg class="office-chair-svg" viewBox="0 0 64 64" fill="none">
-              <rect x="20" y="8" width="24" height="22" rx="5" fill="#9e1b1b" stroke="#e5c17b" stroke-width="2"/>
-              <rect x="16" y="32" width="32" height="8" rx="3" fill="#7f1d1d" stroke="#e5c17b" stroke-width="2"/>
-              <path d="M14 23V33H18M50 23V33H46M32 40V51M20 55H44" stroke="#e5c17b" stroke-width="2.2" stroke-linecap="round"/>
-              <circle cx="20" cy="56" r="2" fill="#e5c17b"/><circle cx="32" cy="56" r="2" fill="#e5c17b"/><circle cx="44" cy="56" r="2" fill="#e5c17b"/>
-            </svg>
-          </div>
-        </div>
-        <span class="seat-label">109</span>
+      <!-- 109 -->
+      <button type="button" class="room-btn" data-room="109">
+        <span class="room-badge-top">VIP OFFICE</span>
+        <svg class="office-unit-svg" viewBox="0 0 100 108" fill="none">
+          <rect x="20" y="6" width="60" height="88" rx="4" fill="#111114" stroke="#e5c17b" stroke-width="2"/>
+          <rect class="door-inner-glow" x="24" y="10" width="52" height="82" rx="2" fill="#fef08a"/>
+          <g class="door-leaf">
+            <rect x="24" y="10" width="52" height="82" rx="2" fill="#27272f" stroke="#e5c17b" stroke-width="1.5"/>
+            <rect x="37" y="18" width="26" height="12" rx="2" fill="#121215" stroke="#e5c17b" stroke-width="1"/>
+            <text x="50" y="26.5" text-anchor="middle" fill="#e5c17b" font-size="8" font-weight="900">109</text>
+            <circle cx="69" cy="52" r="2.3" fill="#e5c17b"/>
+          </g>
+          <g class="chair-group">
+            <rect x="38" y="48" width="24" height="23" rx="5" fill="#7f1d1d" stroke="#e5c17b" stroke-width="1.8"/>
+            <rect x="35" y="70" width="30" height="7" rx="3" fill="#9e1b1b" stroke="#e5c17b" stroke-width="1.6"/>
+            <path d="M35 58 H32 V72 H36 M65 58 H68 V72 H64" stroke="#e5c17b" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="50" y1="77" x2="50" y2="89" stroke="#e5c17b" stroke-width="2.5"/>
+            <path d="M50 89 L35 96 M50 89 L65 96 M50 89 L50 97" stroke="#e5c17b" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="35" cy="97" r="2" fill="#fef08a"/>
+            <circle cx="50" cy="98" r="2" fill="#fef08a"/>
+            <circle cx="65" cy="97" r="2" fill="#fef08a"/>
+          </g>
+        </svg>
+        <span class="room-label">109</span>
       </button>
     </div>
 
     <div class="status-banner" id="status-banner">
-      ▲ 원하시는 호실 문 한 곳을 클릭해 주세요
+      ▲ 원하시는 10원 오피스 문을 클릭해 주세요
     </div>
   </div>
 </section>
@@ -1269,35 +1287,33 @@
 <!-- SEC 3: WINNER TICKET & LEAD FORM -->
 <section id="result-section" class="result-section">
   <div class="result-card">
-    <div class="sec-tag">CONGRATULATIONS!</div>
-    <h2 class="congrats-title">축하합니다! <span>[10원 오피스]</span><br>특별 초청 주인공으로 선정되셨습니다!</h2>
+    <div class="sec-tag">⭐️⭐️⭐️⭐️⭐️</div>
+    <h2 class="congrats-title"><span>10원 오피스</span><br>주인공으로 선정되셨습니다🎉</h2>
 
     <!-- Vintage Ticket -->
     <div class="vintage-ticket">
       <div class="ticket-main">
         <div class="ticket-header">
-          <span>10TH ANNIVERSARY PREMIERE</span>
-          <span>ADMIT ONE</span>
+          <span>10TH ANNIVERSARY VIP TICKET</span>
         </div>
-        <div class="ticket-title">10원 오피스 VIP 초대권</div>
-        <div class="ticket-sub">1개월 임대료 10원 특별 입주 프로모션 티켓</div>
+        <div class="ticket-title">10원 오피스 VIP 입주권</div>
         <div class="ticket-meta">
           <div>
-            <span>SELECTED OFFICE</span>
-            <strong id="ticket-seat">101</strong>
+            <span>OFFICE</span>
+            <strong id="ticket-room">VIP OFFICE</strong>
           </div>
           <div>
-            <span>BENEFIT</span>
-            <strong>1 MONTH / 10₩</strong>
+            <span>혜택</span>
+            <strong>1개월 / 10원</strong>
           </div>
           <div>
-            <span>VALID UNTIL</span>
-            <strong>TODAY 24:00</strong>
+            <span>유효기간</span>
+            <strong>오늘 자정까지</strong>
           </div>
         </div>
       </div>
       <div class="ticket-stub">
-        <div class="stub-vip">VIP PASS</div>
+        <div class="stub-vip">당첨코드</div>
         <div class="stub-no" id="ticket-serial">NO.2026-10TH-084</div>
         <div class="barcode"></div>
       </div>
@@ -1305,19 +1321,19 @@
 
     <!-- Urgency Timer -->
     <div class="urgency-box">
-      <span>⏳ 발급된 티켓 유효시간 (오늘 자정 만료) :</span>
+      <span>⏳ 혜택 유효시간 [오늘 자정 만료] :</span>
       <span class="timer" id="countdown-timer">00:00:00</span>
     </div>
 
-    <!-- Lead Form (입주희망시기 제외, 구글 시트 열과 1:1 매칭) -->
+    <!-- Lead Form -->
     <form class="lead-form" id="lead-form">
       <div class="form-group">
-        <label for="company-name">회사명 또는 대표님 성함 *</label>
-        <input type="text" id="company-name" placeholder="예: (주)스포트라이트 / 김민수" required>
+        <label for="company-name">성함 *</label>
+        <input type="text" id="company-name" placeholder="예: 김스플 또는 스파크플러스" required>
       </div>
 
       <div class="form-group">
-        <label for="phone-number">연락처 (티켓 번호 문자 발송용) *</label>
+        <label for="phone-number">연락처 *</label>
         <input type="tel" id="phone-number" placeholder="010-0000-0000" required>
       </div>
 
@@ -1325,85 +1341,81 @@
         <label>희망 입주 인원 *</label>
         <div class="chip-group">
           <label class="chip-option">
-            <input type="radio" name="headcount" value="1~2인" checked>
-            <span>1~2인</span>
+            <input type="radio" name="headcount" value="1인" checked>
+            <span>1인</span>
           </label>
           <label class="chip-option">
-            <input type="radio" name="headcount" value="3~5인">
-            <span>3~5인</span>
+            <input type="radio" name="headcount" value="2~10인">
+            <span>2~10인</span>
           </label>
           <label class="chip-option">
-            <input type="radio" name="headcount" value="6~10인">
-            <span>6~10인</span>
+            <input type="radio" name="headcount" value="11~30인">
+            <span>11~30인</span>
           </label>
           <label class="chip-option">
-            <input type="radio" name="headcount" value="11인 이상">
-            <span>11인 이상</span>
+            <input type="radio" name="headcount" value="31인 이상">
+            <span>31인 이상</span>
           </label>
         </div>
       </div>
 
       <label class="agree-box">
         <input type="checkbox" required checked>
-        <span>[필수] 프로모션 티켓 발송 및 입주 상담을 위한 개인정보 수집·이용에 동의합니다.</span>
+        <span>[필수] 프로모션 안내 및 입주 상담을 위한 개인정보 수집·이용에 동의합니다.</span>
       </label>
 
-      <button type="submit" class="submit-btn">내 10원 티켓 확정하고 문자 받기</button>
+      <button type="submit" class="submit-btn">10원 오피스 입주권 발권하기</button>
     </form>
   </div>
 </section>
 
-<!-- SEC 4: 10 YEARS MOMENTS ARCHIVE -->
-<section class="moments-section" aria-label="10년의 순간들">
-  <div class="sec-tag">10 YEARS ARCHIVE · THE HISTORY</div>
-  <h2 class="sec-title">10년의 필름 속에 기록된 성장의 순간들</h2>
-  <p class="moments-intro">
-    작은 책상 하나에서 시작된 스타트업이 업계의 주연이 되기까지, 우리가 함께 만든 10년의 기록입니다.
-  </p>
+<!-- SEC 4: 10 YEARS ARCHIVE · THE HISTORY -->
+<section class="archive-section" aria-labelledby="archive-heading">
+  <div class="sec-tag">SPARKPLUS FILM</div>
+  <h2 class="sec-title" id="archive-heading">스파크플러스 10년의 순간들</h2>
 
-  <div class="film-reel-container">
-    <div class="film-strip-bar top" aria-hidden="true">
-      <div class="film-sprocket-track"></div>
-    </div>
+  <div class="film-strip-frame">
+    <div class="film-perforations top" aria-hidden="true"></div>
 
-    <div class="film-frames-grid">
-      <article class="moment-card">
-        <div class="moment-scene">
+    <div class="film-scenes-grid">
+      <!-- SCENE #01 -->
+      <article class="scene-card">
+        <div class="scene-meta">
           <span>SCENE #01 · CRANK-IN</span>
           <span>2016</span>
         </div>
-        <h3 class="moment-title">1호점 <span>첫 개관</span></h3>
-        <p class="moment-desc">
-          “초기 창업가의 밤낮없는 열정이 머무는 공간”이라는 철학으로 첫 번째 오피스 필름을 돌리기 시작했습니다.
+        <h3 class="scene-title">1호점 <span>첫 오픈</span></h3>
+        <p class="scene-desc">
+          “창업가의 밤낮없는 열정이 머무는 공간”이라는 철학으로 첫 번째 오피스 필름을 돌리기 시작했습니다.
         </p>
       </article>
 
-      <article class="moment-card">
-        <div class="moment-scene">
+      <!-- SCENE #02 -->
+      <article class="scene-card">
+        <div class="scene-meta">
           <span>SCENE #02 · CLIMAX</span>
-          <span>2016 – 2025</span>
+          <span>2016 – 2026</span>
         </div>
-        <h3 class="moment-title">누적 <span>1,200+</span> 입주사</h3>
-        <p class="moment-desc">
-          1인 기업부터 시리즈 투자 유치 스타트업, 강소기업까지 1,200여 개 기업의 가장 빛나는 성장 장면을 함께했습니다.
+        <h3 class="scene-title">누적 입주사 <span>6,000+</span></h3>
+        <p class="scene-desc">
+          1인 기업부터 시리즈 투자 유치 스타트업, 강소기업까지 6,000여 개 기업의 가장 빛나는 성장 장면을 함께했습니다.
         </p>
       </article>
 
-      <article class="moment-card highlight-card">
-        <div class="moment-scene">
+      <!-- SCENE #03 -->
+      <article class="scene-card special">
+        <div class="scene-meta">
           <span>SCENE #03 · SPECIAL</span>
-          <span>DEC 2026</span>
+          <span>NOW</span>
         </div>
-        <h3 class="moment-title">월세 <span>10원</span> 주연 캐스팅</h3>
-        <p class="moment-desc">
-          10주년을 맞은 2026년 12월, 다음 10년의 역사를 함께 써 내려갈 새로운 주인공(대표님)을 10원에 초대합니다.
+        <h3 class="scene-title"><span>10원 오피스</span> 주인공 캐스팅</h3>
+        <p class="scene-desc">
+          10주년을 맞은 지금, 다음 10년의 역사를 함께 써 내려갈 주인공을 10원에 초대합니다
         </p>
       </article>
     </div>
 
-    <div class="film-strip-bar bottom" aria-hidden="true">
-      <div class="film-sprocket-track"></div>
-    </div>
+    <div class="film-perforations bottom" aria-hidden="true"></div>
   </div>
 </section>
 
@@ -1411,7 +1423,7 @@
 <footer class="trust-section">
   <p class="trust-quote">
     “지난 10년간 수많은 비즈니스의 시작과 성장을 함께했습니다.<br>
-    비용 걱정 없이 오직 비즈니스에만 집중할 수 있도록, 12월의 주인공을 10원에 모십니다.”
+    비용 걱정 없이 오직 비즈니스에만 집중할 수 있도록, 1개월 단돈 10원에 모십니다.”
   </p>
   <p class="legal-note">
     ※ 본 프로모션은 당사 기준 및 계약 조건에 따라 적용되며, 상세 혜택 및 잔여 호실 안내 등은 전담 매니저 해피콜을 통해 확정됩니다.
@@ -1421,53 +1433,53 @@
 <!-- COMPLETION MODAL -->
 <div class="modal-backdrop" id="complete-modal">
   <div class="modal-box">
-    <h3>🎟️ VIP 티켓 등록 완료!</h3>
+    <h3>🎟️ 10원 오피스 발권 완료!</h3>
     <p id="modal-msg">
       티켓 번호가 정상적으로 귀속되었습니다.<br>
-      입력하신 연락처로 티켓 안내 문자가 발송되며, 전담 매니저가 순차적으로 연락드릴 예정입니다.
+      입력하신 연락처로 전담 매니저가 연락드릴 예정입니다.
     </p>
     <button type="button" class="modal-close" onclick="closeModal()">확인</button>
   </div>
 </div>
 
 <script>
-  // 1. Office Door Selection & 1.5s Dramatic Spotlight Animation
-  const seatButtons = document.querySelectorAll('.seat-btn');
+  // 1. Office Room Door Selection & 1.5s Dramatic Spotlight Animation
+  const roomButtons = document.querySelectorAll('.room-btn');
   const statusBanner = document.getElementById('status-banner');
   const resultSection = document.getElementById('result-section');
-  const ticketSeatEl = document.getElementById('ticket-seat');
+  const ticketRoomEl = document.getElementById('ticket-room');
   const ticketSerialEl = document.getElementById('ticket-serial');
   let isAnimating = false;
   let hasWon = false;
 
-  seatButtons.forEach((btn) => {
+  roomButtons.forEach((btn) => {
     btn.addEventListener('click', () => {
       if (isAnimating || hasWon) return;
       isAnimating = true;
 
-      const selectedSeatLabel = btn.querySelector('.seat-label').textContent;
-      statusBanner.textContent = "✨ 잔여 10원 티켓 수량 및 주인공 자격 매칭 중...";
+      const selectedRoomLabel = btn.querySelector('.room-label').textContent;
+      statusBanner.textContent = "✨ 10원 오피스 주인공 자격 매칭 중...";
 
-      seatButtons.forEach(b => b.disabled = true);
+      roomButtons.forEach(b => b.disabled = true);
 
       let scanIndex = 0;
       const scanInterval = setInterval(() => {
-        seatButtons.forEach(b => b.classList.remove('scanning'));
-        seatButtons[scanIndex % seatButtons.length].classList.add('scanning');
+        roomButtons.forEach(b => b.classList.remove('scanning'));
+        roomButtons[scanIndex % roomButtons.length].classList.add('scanning');
         scanIndex++;
       }, 140);
 
       setTimeout(() => {
         clearInterval(scanInterval);
-        seatButtons.forEach(b => b.classList.remove('scanning'));
+        roomButtons.forEach(b => b.classList.remove('scanning'));
         btn.classList.add('winner');
 
         const randNum = String(Math.floor(Math.random() * 89) + 11).padStart(3, '0');
         const serial = `NO.2026-10TH-${randNum}`;
 
-        ticketSeatEl.textContent = selectedSeatLabel;
+        ticketRoomEl.textContent = selectedRoomLabel;
         ticketSerialEl.textContent = serial;
-        statusBanner.textContent = `🎉 [${selectedSeatLabel}] 10원 오피스 당첨! 아래에서 티켓을 확정하세요.`;
+        statusBanner.textContent = `🎉 [${selectedRoomLabel}] 10원 오피스 문이 열렸습니다! 아래에서 입주를 문의하세요.`;
 
         hasWon = true;
         isAnimating = false;
@@ -1492,10 +1504,19 @@
     const minutes = String(Math.floor((diff / 1000 / 60) % 60)).padStart(2, '0');
     const seconds = String(Math.floor((diff / 1000) % 60)).padStart(2, '0');
 
-    document.getElementById('countdown-timer').textContent = `${hours}:${minutes}:${seconds}`;
-    document.getElementById('hero-clock-h').textContent = hours;
-    document.getElementById('hero-clock-m').textContent = minutes;
-    document.getElementById('hero-clock-s').textContent = seconds;
+    const bannerH = document.getElementById('banner-hours');
+    const bannerM = document.getElementById('banner-minutes');
+    const bannerS = document.getElementById('banner-seconds');
+    if (bannerH && bannerM && bannerS) {
+      bannerH.textContent = hours;
+      bannerM.textContent = minutes;
+      bannerS.textContent = seconds;
+    }
+
+    const resultTimer = document.getElementById('countdown-timer');
+    if (resultTimer) {
+      resultTimer.textContent = `${hours}:${minutes}:${seconds}`;
+    }
   }
   setInterval(updateMidnightTimer, 1000);
   updateMidnightTimer();
@@ -1513,11 +1534,11 @@
     const name = document.getElementById('company-name').value.trim();
     const phone = document.getElementById('phone-number').value.trim();
     const headcount = document.querySelector('input[name="headcount"]:checked').value;
-    const seat = ticketSeatEl.textContent;
+    const room = ticketRoomEl.textContent;
     const serial = ticketSerialEl.textContent;
 
     submitBtn.disabled = true;
-    submitBtn.textContent = "티켓 등록 및 발송 중...";
+    submitBtn.textContent = "입주권 발권 및 등록 중...";
 
     try {
       if (GOOGLE_SCRIPT_URL.startsWith("https://")) {
@@ -1526,7 +1547,7 @@
           mode: "no-cors",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            seat: seat,
+            seat: room,
             serial: serial,
             companyName: name,
             phone: phone,
@@ -1535,15 +1556,14 @@
         });
       }
 
-      modalMsg.innerHTML = `<strong>${name}</strong>님, 고유 티켓(<strong>${serial}</strong>) 등록이 완료되었습니다.<br><br>전담 매니저가 확인 후 순차적으로 연락드려 10원 입주 안내를 도와드리겠습니다.`;
+      modalMsg.innerHTML = `<strong>${name}</strong>님, <strong>${room}</strong> 10원 오피스(<strong>${serial}</strong>) 티켓 발권이 완료되었습니다.<br><br>전담 매니저가 확인 후 순차적으로 연락드리겠습니다.`;
       modal.style.display = 'flex';
       launchConfetti();
-      leadForm.reset();
     } catch (err) {
       alert("일시적인 오류가 발생했습니다. 다시 시도해 주세요.");
     } finally {
       submitBtn.disabled = false;
-      submitBtn.textContent = "내 10원 티켓 확정하고 문자 받기";
+      submitBtn.textContent = "10원 오피스 입주권 발권하기";
     }
   });
 
