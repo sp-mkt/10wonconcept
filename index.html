@@ -1521,7 +1521,7 @@
   setInterval(updateMidnightTimer, 1000);
   updateMidnightTimer();
 
-  // 3. Lead Form Submission -> Google Sheets 연동
+  // 3. Lead Form Submission -> Google Sheets 연동 (Form Data 방식)
   const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwKe-doZfI8kIXVEbbfdF7EbNdcWouBQ53236KcItpZozdt4MzSPtFWpge8dy9t-Lhf/exec";
   const leadForm = document.getElementById('lead-form');
   const submitBtn = leadForm.querySelector('.submit-btn');
@@ -1538,23 +1538,21 @@
     const serial = ticketSerialEl.textContent;
 
     submitBtn.disabled = true;
-    submitBtn.textContent = "입주권 발권 및 등록 중...";
+    submitBtn.textContent = "10원 오피스 입주권 발권 중...";
+
+    const formData = new URLSearchParams();
+    formData.append("seat", room);
+    formData.append("serial", serial);
+    formData.append("companyName", name);
+    formData.append("phone", phone);
+    formData.append("headcount", headcount);
 
     try {
-      if (GOOGLE_SCRIPT_URL.startsWith("https://")) {
-        await fetch(GOOGLE_SCRIPT_URL, {
-          method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            seat: room,
-            serial: serial,
-            companyName: name,
-            phone: phone,
-            headcount: headcount
-          })
-        });
-      }
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        body: formData
+      });
 
       modalMsg.innerHTML = `<strong>${name}</strong>님, <strong>${room}</strong> 10원 오피스(<strong>${serial}</strong>) 티켓 발권이 완료되었습니다.<br><br>전담 매니저가 확인 후 순차적으로 연락드리겠습니다.`;
       modal.style.display = 'flex';
@@ -1566,10 +1564,6 @@
       submitBtn.textContent = "10원 오피스 입주권 발권하기";
     }
   });
-
-  function closeModal() {
-    modal.style.display = 'none';
-  }
 
   // 4. Lightweight Gold & Red Confetti Effect
   const canvas = document.getElementById('confetti-canvas');
