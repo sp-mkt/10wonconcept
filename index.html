@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+  
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TVRZVDQB');</script>
+<!-- End Google Tag Manager -->
+  
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>10주년 주인공 찾기 프로젝트 : <10원 오피스> | 스파크플러스</title>
@@ -49,6 +58,11 @@
     z-index: 9999;
   }
 
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TVRZVDQB"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+  
   /* =========================================
      0. TOP BRAND BAR (OFFICIAL TRUST HEADER)
   ========================================= */
@@ -1896,6 +1910,15 @@
 
       modalMsg.innerHTML = `<strong>${name}</strong>님, <strong>${room}</strong> 10원 오피스(<strong>${serial}</strong>) 티켓 발권이 완료되었습니다.<br><br>전담 매니저가 확인 후 순차적으로 연락드리겠습니다.`;
       modal.style.display = 'flex';
+      
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({
+  event: '10won_ticket_submit',
+  office_room: room,
+  headcount: headcount
+});
+
+      
       launchConfetti();
     } catch (err) {
       alert("일시적인 오류가 발생했습니다. 다시 시도해 주세요.");
