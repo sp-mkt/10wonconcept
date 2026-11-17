@@ -1,0 +1,1612 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>10주년 주인공 찾기 프로젝트 : <10원 오피스></title>
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap');
+
+  :root {
+    --bg-black: #070708;
+    --bg-elevated: #121215;
+    --velvet-red: #9e1b1b;
+    --velvet-bright: #dc2626;
+    --gold: #e5c17b;
+    --gold-light: #fef08a;
+    --ticket-paper: #f5ebd6;
+    --text-white: #ffffff;
+    --text-gray: #9ca3af;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--bg-black);
+    color: var(--text-white);
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  /* Confetti Canvas */
+  #confetti-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* HERO SECTION */
+  .hero {
+    position: relative;
+    min-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 64px 20px 56px;
+    background: radial-gradient(circle at 50% 25%, rgba(158, 27, 27, 0.35) 0%, rgba(229, 193, 123, 0.08) 35%, rgba(7, 7, 8, 1) 75%);
+    overflow: hidden;
+  }
+
+  .spotlight-beam {
+    position: absolute;
+    top: -10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 750px;
+    background: conic-gradient(from 165deg at 50% 0%, transparent 0deg, rgba(229, 193, 123, 0.14) 15deg, transparent 30deg);
+    pointer-events: none;
+    animation: swayBeam 6s ease-in-out infinite alternate;
+  }
+
+  @keyframes swayBeam {
+    0% { transform: translateX(-52%) rotate(-3deg); }
+    100% { transform: translateX(-48%) rotate(3deg); }
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid rgba(229, 193, 123, 0.5);
+    background: rgba(229, 193, 123, 0.1);
+    color: var(--gold);
+    padding: 6px 18px;
+    border-radius: 9999px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    margin-bottom: 24px;
+    z-index: 2;
+  }
+
+  .hero-en {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold);
+    font-size: 1.05rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    opacity: 0.9;
+    z-index: 2;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.2rem, 5.5vw, 4.2rem);
+    font-weight: 900;
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    margin-bottom: 20px;
+    z-index: 2;
+  }
+
+  .hero h1 .highlight {
+    color: var(--gold);
+    text-shadow: 0 0 30px rgba(229, 193, 123, 0.45);
+  }
+
+  .hero-sub {
+    max-width: 580px;
+    color: #d1d5db;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    margin-bottom: 36px;
+    z-index: 2;
+    word-break: keep-all;
+  }
+
+  /* Hero 10-Won Office Door & Chair Visual */
+  .hero-office-visual {
+    position: relative;
+    width: 190px;
+    height: 185px;
+    margin: 0 auto 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+  }
+
+  .stage-glow {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(229, 193, 123, 0.35) 0%, transparent 70%);
+    animation: pulseGlow 2.5s infinite ease-in-out;
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% { transform: scale(0.95); opacity: 0.7; }
+    50% { transform: scale(1.1); opacity: 1; }
+  }
+
+  .hero-door-frame {
+    position: relative;
+    width: 112px;
+    height: 164px;
+    border: 2.5px solid var(--gold);
+    border-bottom: none;
+    border-radius: 10px 10px 0 0;
+    background: radial-gradient(circle at 50% 45%, rgba(254, 240, 138, 0.28), rgba(158, 27, 27, 0.45));
+    box-shadow: 0 0 35px rgba(229, 193, 123, 0.28);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 14px;
+  }
+
+  .hero-door-frame::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: -14px;
+    right: -14px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .hero-room-sign {
+    background: #140c0c;
+    border: 1.5px solid var(--gold);
+    color: var(--gold-light);
+    font-size: 0.76rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    padding: 3px 12px;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    margin-bottom: 10px;
+  }
+
+  .hero-door-panel {
+    position: absolute;
+    inset: 3px 3px 0 3px;
+    border-radius: 7px 7px 0 0;
+    background: linear-gradient(160deg, #8b1616 0%, #450a0a 100%);
+    border-right: 2px solid rgba(229, 193, 123, 0.7);
+    transform-origin: left center;
+    transform: perspective(500px) rotateY(-28deg);
+    box-shadow: 10px 0 22px rgba(0, 0, 0, 0.65);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+  }
+
+  .hero-door-knob {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gold-light);
+    box-shadow: 0 0 8px var(--gold);
+  }
+
+  .hero-chair-inside {
+    position: relative;
+    z-index: 2;
+    margin-top: 18px;
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.8));
+  }
+
+  .cta-hero {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, var(--velvet-bright), var(--velvet-red));
+    color: #fff;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 1.15rem;
+    padding: 18px 36px;
+    border-radius: 9999px;
+    border: 1px solid rgba(229, 193, 123, 0.6);
+    box-shadow: 0 10px 30px rgba(185, 28, 28, 0.5);
+    transition: all 0.25s ease;
+    z-index: 2;
+  }
+
+  .cta-hero:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(229, 193, 123, 0.35);
+  }
+
+  /* URGENT DEADLINE CLOCK BAR (BELOW HERO) */
+  .deadline-banner {
+    background: linear-gradient(90deg, #120909 0%, #2a0d0d 50%, #120909 100%);
+    border-top: 1px solid rgba(229, 193, 123, 0.35);
+    border-bottom: 1px solid rgba(229, 193, 123, 0.35);
+    padding: 22px 20px;
+    position: relative;
+    z-index: 5;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.75);
+  }
+
+  .deadline-banner-inner {
+    max-width: 920px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 16px 28px;
+    text-align: center;
+  }
+
+  .deadline-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(220, 38, 38, 0.2);
+    border: 1px solid rgba(248, 113, 113, 0.5);
+    color: #fca5a5;
+    font-size: 0.85rem;
+    font-weight: 800;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    letter-spacing: 0.03em;
+  }
+
+  .live-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ef4444;
+    box-shadow: 0 0 10px #ef4444;
+    animation: blinkDot 1s infinite alternate;
+  }
+
+  @keyframes blinkDot {
+    from { opacity: 0.35; transform: scale(0.85); }
+    to { opacity: 1; transform: scale(1.2); }
+  }
+
+  .deadline-copy {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #f3f4f6;
+  }
+
+  .deadline-copy strong {
+    color: var(--gold);
+  }
+
+  .clock-boxes {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .clock-unit {
+    background: #09090b;
+    border: 1px solid rgba(229, 193, 123, 0.45);
+    border-radius: 10px;
+    padding: 8px 12px;
+    min-width: 58px;
+    text-align: center;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  }
+
+  .clock-unit .num {
+    display: block;
+    font-size: 1.35rem;
+    font-weight: 900;
+    color: var(--gold-light);
+    font-variant-numeric: tabular-nums;
+    line-height: 1.1;
+  }
+
+  .clock-unit .unit-label {
+    display: block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #9ca3af;
+    margin-top: 2px;
+    letter-spacing: 0.08em;
+  }
+
+  .clock-sep {
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: var(--gold);
+    animation: blinkDot 1s infinite alternate;
+  }
+
+  /* INTERACTIVE STAGE SECTION */
+  .stage-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 84px 20px;
+    text-align: center;
+  }
+
+  .sec-tag {
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    margin-bottom: 10px;
+  }
+
+  .sec-title {
+    font-size: clamp(1.7rem, 3.5vw, 2.5rem);
+    font-weight: 800;
+    margin-bottom: 14px;
+    word-break: keep-all;
+  }
+
+  .sec-desc {
+    color: var(--text-gray);
+    margin-bottom: 48px;
+    font-size: 1.05rem;
+    word-break: keep-all;
+  }
+
+  /* Office Corridor Stage */
+  .theater-stage {
+    background: linear-gradient(180deg, #131316 0%, #0a0a0c 100%);
+    border: 1px solid #26262b;
+    border-radius: 24px;
+    padding: 48px 24px;
+    position: relative;
+    box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.9);
+  }
+
+  .screen-arc {
+    width: 72%;
+    height: 12px;
+    margin: 0 auto 48px;
+    border-top: 3px solid rgba(229, 193, 123, 0.45);
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    box-shadow: 0 -10px 25px rgba(229, 193, 123, 0.18);
+    position: relative;
+  }
+
+  .screen-arc::after {
+    content: "10WON PRIVATE OFFICE SUITE";
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.72rem;
+    letter-spacing: 0.28em;
+    color: rgba(229, 193, 123, 0.65);
+    white-space: nowrap;
+  }
+
+  .seats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .seat-btn {
+    background: #16161a;
+    border: 1px solid #2e2e36;
+    border-radius: 18px;
+    padding: 20px 14px 18px;
+    cursor: pointer;
+    transition: all 0.28s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .office-unit-visual {
+    position: relative;
+    width: 86px;
+    height: 106px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+  .door-frame-mini {
+    position: relative;
+    width: 66px;
+    height: 98px;
+    border: 2px solid rgba(229, 193, 123, 0.55);
+    border-bottom: 2px solid rgba(229, 193, 123, 0.3);
+    border-radius: 7px 7px 2px 2px;
+    background: radial-gradient(circle at 50% 55%, rgba(229, 193, 123, 0.2), rgba(20, 14, 14, 0.95));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 6px;
+    transition: all 0.3s ease;
+  }
+
+  .door-plate-10won {
+    position: absolute;
+    top: -10px;
+    background: #1a1212;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-size: 0.64rem;
+    font-weight: 900;
+    padding: 1px 7px;
+    border-radius: 4px;
+    letter-spacing: 0.04em;
+    z-index: 4;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+  }
+
+  .door-leaf-mini {
+    position: absolute;
+    inset: 2px;
+    border-radius: 5px 5px 0 0;
+    background: linear-gradient(155deg, #6b1414 0%, #330909 100%);
+    border-right: 1.5px solid rgba(229, 193, 123, 0.5);
+    transform-origin: left center;
+    transform: perspective(360px) rotateY(-12deg);
+    transition: transform 0.35s ease, background 0.35s ease;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 6px;
+  }
+
+  .door-leaf-mini::after {
+    content: "";
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+
+  .office-chair-svg {
+    width: 44px;
+    height: 44px;
+    z-index: 1;
+    transition: transform 0.3s ease;
+  }
+
+  .seat-btn:hover:not(:disabled) {
+    border-color: var(--gold);
+    transform: translateY(-5px);
+    background: #211919;
+    box-shadow: 0 12px 28px rgba(229, 193, 123, 0.18);
+  }
+
+  .seat-btn:hover:not(:disabled) .door-leaf-mini,
+  .seat-btn.scanning .door-leaf-mini,
+  .seat-btn.winner .door-leaf-mini {
+    transform: perspective(360px) rotateY(-58deg);
+    background: linear-gradient(155deg, #b91c1c 0%, #5c0f0f 100%);
+  }
+
+  .seat-btn:hover:not(:disabled) .door-frame-mini,
+  .seat-btn.scanning .door-frame-mini,
+  .seat-btn.winner .door-frame-mini {
+    border-color: var(--gold-light);
+    background: radial-gradient(circle at 50% 50%, rgba(254, 240, 138, 0.45), rgba(158, 27, 27, 0.35));
+    box-shadow: 0 0 20px rgba(229, 193, 123, 0.35);
+  }
+
+  .seat-btn:hover:not(:disabled) .office-chair-svg,
+  .seat-btn.scanning .office-chair-svg,
+  .seat-btn.winner .office-chair-svg {
+    transform: scale(1.08);
+  }
+
+  .seat-btn.scanning {
+    border-color: var(--gold);
+    background: rgba(229, 193, 123, 0.22);
+    box-shadow: 0 0 30px rgba(229, 193, 123, 0.6);
+    transform: scale(1.04);
+  }
+
+  .seat-btn.winner {
+    border-color: var(--gold-light);
+    background: linear-gradient(145deg, #881616, #450a0a);
+    box-shadow: 0 0 35px rgba(229, 193, 123, 0.75);
+  }
+
+  .seat-label {
+    font-size: 1.08rem;
+    font-weight: 900;
+    color: #f3f4f6;
+    letter-spacing: 0.08em;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .status-banner {
+    margin-top: 32px;
+    min-height: 32px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--gold);
+  }
+
+  /* RESULT & TICKET + LEAD FORM SECTION */
+  .result-section {
+    display: none;
+    max-width: 760px;
+    margin: 0 auto 80px;
+    padding: 0 20px;
+    animation: fadeUp 0.7s ease forwards;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .result-card {
+    background: linear-gradient(180deg, #1a1515 0%, #111114 100%);
+    border: 1px solid rgba(229, 193, 123, 0.4);
+    border-radius: 24px;
+    padding: 44px 32px;
+    text-align: center;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
+  }
+
+  .congrats-title {
+    font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 10px;
+    word-break: keep-all;
+  }
+
+  .congrats-title span {
+    color: var(--gold);
+  }
+
+  .vintage-ticket {
+    max-width: 520px;
+    margin: 32px auto;
+    background: var(--ticket-paper);
+    color: #1c1917;
+    border-radius: 12px;
+    display: flex;
+    position: relative;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    border: 3px solid #9e1b1b;
+    text-align: left;
+  }
+
+  .vintage-ticket::before,
+  .vintage-ticket::after {
+    content: "";
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background: #151213;
+    border-radius: 50%;
+    left: 72%;
+    z-index: 3;
+  }
+  .vintage-ticket::before { top: -14px; }
+  .vintage-ticket::after { bottom: -14px; }
+
+  .ticket-main {
+    flex: 0 0 72%;
+    padding: 22px 24px;
+    border-right: 2px dashed #9e1b1b;
+    background: repeating-linear-gradient(
+      45deg,
+      rgba(158, 27, 27, 0.03),
+      rgba(158, 27, 27, 0.03) 10px,
+      transparent 10px,
+      transparent 20px
+    );
+  }
+
+  .ticket-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: #9e1b1b;
+    letter-spacing: 0.1em;
+    border-bottom: 1px solid #9e1b1b;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+
+  .ticket-title {
+    font-size: 1.65rem;
+    font-weight: 900;
+    color: #7f1d1d;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+  }
+
+  .ticket-sub {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #44403c;
+    margin-bottom: 14px;
+  }
+
+  .ticket-meta {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    background: rgba(158, 27, 27, 0.08);
+    padding: 8px 10px;
+    border-radius: 6px;
+    font-size: 0.72rem;
+  }
+
+  .ticket-meta div span {
+    display: block;
+    color: #78716c;
+    font-weight: 600;
+  }
+
+  .ticket-meta div strong {
+    color: #1c1917;
+    font-weight: 800;
+    font-size: 0.82rem;
+  }
+
+  .ticket-stub {
+    flex: 1;
+    background: #9e1b1b;
+    color: #f5ebd6;
+    padding: 18px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .stub-vip {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+  }
+
+  .stub-no {
+    font-size: 0.7rem;
+    margin-top: 8px;
+    letter-spacing: 0.05em;
+    opacity: 0.9;
+    word-break: break-all;
+  }
+
+  .barcode {
+    margin-top: 12px;
+    width: 80%;
+    height: 26px;
+    background: repeating-linear-gradient(
+      90deg,
+      #f5ebd6,
+      #f5ebd6 2px,
+      transparent 2px,
+      transparent 4px,
+      #f5ebd6 4px,
+      #f5ebd6 5px,
+      transparent 5px,
+      transparent 8px
+    );
+    opacity: 0.85;
+  }
+
+  .urgency-box {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(220, 38, 38, 0.15);
+    border: 1px solid rgba(220, 38, 38, 0.5);
+    color: #fca5a5;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 32px;
+  }
+
+  .timer {
+    color: #ffffff;
+    font-variant-numeric: tabular-nums;
+    background: #9e1b1b;
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+
+  /* Lead Capture Form */
+  .lead-form {
+    max-width: 480px;
+    margin: 0 auto;
+    text-align: left;
+    background: #18181c;
+    padding: 28px;
+    border-radius: 16px;
+    border: 1px solid #2e2e36;
+  }
+
+  .form-group {
+    margin-bottom: 18px;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #e5e7eb;
+    margin-bottom: 8px;
+  }
+
+  .form-group input[type="text"],
+  .form-group input[type="tel"] {
+    width: 100%;
+    padding: 14px 16px;
+    background: #0d0d10;
+    border: 1px solid #3f3f46;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .form-group input:focus {
+    border-color: var(--gold);
+  }
+
+  .chip-group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .chip-option input {
+    display: none;
+  }
+
+  .chip-option span {
+    display: block;
+    text-align: center;
+    padding: 11px 8px;
+    background: #0d0d10;
+    border: 1px solid #3f3f46;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #d1d5db;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .chip-option input:checked + span {
+    background: rgba(229, 193, 123, 0.18);
+    border-color: var(--gold);
+    color: var(--gold);
+    font-weight: 800;
+  }
+
+  .agree-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.83rem;
+    color: #9ca3af;
+    margin: 18px 0 22px;
+    cursor: pointer;
+  }
+
+  .agree-box input {
+    accent-color: var(--gold);
+    width: 16px;
+    height: 16px;
+  }
+
+  .submit-btn {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(135deg, #e5c17b, #c59b48);
+    color: #0a0a0a;
+    font-size: 1.1rem;
+    font-weight: 900;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(229, 193, 123, 0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .submit-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(229, 193, 123, 0.45);
+  }
+
+  .submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  /* 10 YEARS MOMENTS SECTION */
+  .moments-section {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 84px 20px 64px;
+    text-align: center;
+    border-top: 1px solid #1f1f24;
+  }
+
+  .moments-intro {
+    max-width: 600px;
+    margin: 0 auto 48px;
+    color: var(--text-gray);
+    font-size: 1.05rem;
+    word-break: keep-all;
+  }
+
+  .film-reel-container {
+    position: relative;
+    background: #101013;
+    border: 1px solid rgba(229, 193, 123, 0.28);
+    border-radius: 20px;
+    padding: 36px 0;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85);
+  }
+
+  .film-strip-bar {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 16px;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .film-strip-bar.top {
+    top: 10px;
+  }
+
+  .film-strip-bar.bottom {
+    bottom: 10px;
+  }
+
+  .film-sprocket-track {
+    width: 200%;
+    height: 100%;
+    background-image: repeating-linear-gradient(
+      90deg,
+      rgba(229, 193, 123, 0.32) 0px,
+      rgba(229, 193, 123, 0.32) 18px,
+      transparent 18px,
+      transparent 36px
+    );
+    animation: filmSprocketMove 16s linear infinite;
+    will-change: transform;
+  }
+
+  .film-strip-bar.bottom .film-sprocket-track {
+    animation-direction: reverse;
+  }
+
+  @keyframes filmSprocketMove {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .film-frames-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    padding: 0 24px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .moment-card {
+    background: linear-gradient(180deg, #17171c 0%, #111114 100%);
+    border: 1px solid #2b2b33;
+    border-radius: 14px;
+    padding: 26px 22px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+    word-break: keep-all;
+  }
+
+  .moment-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--gold);
+  }
+
+  .moment-card.highlight-card {
+    border-color: rgba(229, 193, 123, 0.65);
+    background: linear-gradient(160deg, rgba(158, 27, 27, 0.26) 0%, #141418 100%);
+    box-shadow: 0 12px 32px rgba(158, 27, 27, 0.25);
+  }
+
+  .moment-scene {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .moment-title {
+    font-size: clamp(1.18rem, 2vw, 1.38rem);
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 12px;
+    line-height: 1.35;
+  }
+
+  .moment-title span {
+    color: var(--gold);
+  }
+
+  .moment-desc {
+    font-size: 0.92rem;
+    color: #d1d5db;
+    line-height: 1.65;
+  }
+
+  /* Trust & Footer */
+  .trust-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 36px 20px 80px;
+    text-align: center;
+  }
+
+  .trust-quote {
+    max-width: 620px;
+    margin: 0 auto 24px;
+    font-size: 1.05rem;
+    color: #d1d5db;
+    word-break: keep-all;
+  }
+
+  .legal-note {
+    font-size: 0.8rem;
+    color: #6b7280;
+    word-break: keep-all;
+  }
+
+  /* Completion Modal */
+  .modal-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .modal-box {
+    background: #18181c;
+    border: 1px solid var(--gold);
+    border-radius: 20px;
+    max-width: 420px;
+    width: 100%;
+    padding: 36px 28px;
+    text-align: center;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.9);
+  }
+
+  .modal-box h3 {
+    font-size: 1.5rem;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .modal-box p {
+    color: #e5e7eb;
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+    word-break: keep-all;
+  }
+
+  .modal-close {
+    background: var(--velvet-red);
+    color: #fff;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  @media (max-width: 820px) {
+    .film-frames-grid {
+      grid-template-columns: 1fr;
+      padding: 0 18px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .seats-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .vintage-ticket { flex-direction: column; }
+    .vintage-ticket::before, .vintage-ticket::after { display: none; }
+    .ticket-main { border-right: none; border-bottom: 2px dashed #9e1b1b; }
+    .result-card { padding: 32px 18px; }
+    .deadline-banner-inner { flex-direction: column; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="confetti-canvas"></canvas>
+
+<!-- SEC 1: HERO -->
+<section class="hero">
+  <div class="spotlight-beam"></div>
+  <div class="hero-badge">★ 10TH ANNIVERSARY SPECIAL INVITATION ★</div>
+  <div class="hero-en">The 2026 Year-End Business Awards</div>
+  <h1>내년 사무실 월세,<br>딱 <span class="highlight">'10원'</span>만 내세요.</h1>
+  <p class="hero-sub">
+    <strong>10주년 주인공 찾기 프로젝트 : <10원 오피스></strong><br>
+    12월 연말, 가장 빛나는 성장을 이룰 대표님을 위한 VIP 오피스 초대전.<br>
+    지금 스포트라이트의 주인공이 되어 1개월 10원 입주 티켓을 거머쥐세요.
+  </p>
+
+  <!-- 10-Won Private Office Door & Chair Visual -->
+  <div class="hero-office-visual">
+    <div class="stage-glow"></div>
+    <div class="hero-door-frame">
+      <div class="hero-room-sign">10₩</div>
+      <div class="hero-door-panel">
+        <div class="hero-door-knob"></div>
+      </div>
+      <svg class="hero-chair-inside" width="54" height="58" viewBox="0 0 64 64" fill="none">
+        <rect x="20" y="6" width="24" height="24" rx="5" fill="#9e1b1b" stroke="#fef08a" stroke-width="2.2"/>
+        <rect x="16" y="32" width="32" height="8" rx="3.5" fill="#7f1d1d" stroke="#fef08a" stroke-width="2.2"/>
+        <path d="M14 23V34H18M50 23V34H46" stroke="#e5c17b" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M32 40V52M20 55H44M32 52L21 56M32 52L43 56" stroke="#fef08a" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="20" cy="57" r="2" fill="#e5c17b"/>
+        <circle cx="32" cy="57" r="2" fill="#e5c17b"/>
+        <circle cx="44" cy="57" r="2" fill="#e5c17b"/>
+      </svg>
+    </div>
+  </div>
+
+  <a href="#interactive-stage" class="cta-hero">
+    내 10원 오피스 호실 선택하기 ↓
+  </a>
+</section>
+
+<!-- URGENT DEADLINE CLOCK BAR -->
+<div class="deadline-banner" role="region" aria-label="프로모션 마감 카운트다운">
+  <div class="deadline-banner-inner">
+    <div class="deadline-badge">
+      <span class="live-dot"></span>
+      <span>잔여 티켓 : 3석 남음</span>
+    </div>
+    <div class="deadline-copy">
+      오늘 <strong>자정(24:00)</strong>이 지나면 10원 오피스 초청장이 소멸됩니다
+    </div>
+    <div class="clock-boxes" aria-live="polite">
+      <div class="clock-unit">
+        <span class="num" id="hero-clock-h">00</span>
+        <span class="unit-label">HOURS</span>
+      </div>
+      <span class="clock-sep">:</span>
+      <div class="clock-unit">
+        <span class="num" id="hero-clock-m">00</span>
+        <span class="unit-label">MINS</span>
+      </div>
+      <span class="clock-sep">:</span>
+      <div class="clock-unit">
+        <span class="num" id="hero-clock-s">00</span>
+        <span class="unit-label">SECS</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SEC 2: INTERACTIVE OFFICE DOOR & CHAIR SELECTION -->
+<section id="interactive-stage" class="stage-section">
+  <div class="sec-tag">STEP 01 · 10WON OFFICE SELECTION</div>
+  <h2 class="sec-title">주인공의 10원 오피스 문을 열어주세요</h2>
+  <p class="sec-desc">6개의 오피스 호실 중 핀 조명이 켜지는 문을 클릭하면 10원 입주 당첨 여부를 즉시 확인할 수 있습니다.</p>
+
+  <div class="theater-stage">
+    <div class="screen-arc"></div>
+    <div class="seats-grid" id="seats-grid">
+      <button type="button" class="seat-btn" data-seat="101">
+        <div class="office-unit-visual">
+          <div class="door-frame-mini">
+            <span class="door-plate-10won">10₩</span>
+            <div class="door-leaf-mini"></div>
+            <svg class="office-chair-svg" viewBox="0 0 64 64" fill="none">
+              <rect x="20" y="8" width="24" height="22" rx="5" fill="#9e1b1b" stroke="#e5c17b" stroke-width="2"/>
+              <rect x="16" y="32" width="32" height="8" rx="3" fill="#7f1d1d" stroke="#e5c17b" stroke-width="2"/>
+              <path d="M14 23V33H18M50 23V33H46M32 40V51M20 55H44" stroke="#e5c17b" stroke-width="2.2" stroke-linecap="round"/>
+              <circle cx="20" cy="56" r="2" fill="#e5c17b"/><circle cx="32" cy="56" r="2" fill="#e5c17b"/><circle cx="44" cy="56" r="2" fill="#e5c17b"/>
+            </svg>
+          </div>
+        </div>
+        <span class="seat-label">101</span>
+      </button>
+
+      <button type="button" class="seat-btn" data-seat="102">
+        <div class="office-unit-visual">
+          <div class="door-frame-mini">
+            <span class="door-plate-10won">10₩</span>
+            <div class="door-leaf-mini"></div>
+            <svg class="office-chair-svg" viewBox="0 0 64 64" fill="none">
+              <rect x="20" y="8" width="24" height="22" rx="5" fill="#9e1b1b" stroke="#e5c17b" stroke-width="2"/>
+              <rect x="16" y="32" width="32" height="8" rx="3" fill="#7f1d1d" stroke="#e5c17b" stroke-width="2"/>
+              <path d="M14 23V33H18M50 23V33H46M32 40V51M20 55H44" stroke="#e5c17b" stroke-width="2.2" stroke-linecap="round"/>
+              <circle cx="20" cy="56" r="2" fill="#e5c17b"/><circle cx="32" cy="56" r="2" fill="#e5c17b"/><circle cx="44" cy="56" r="2" fill="#e5c17b"/>
+            </svg>
+          </div>
+        </div>
+        <span class="seat-label">102</span>
+      </button>
+
+      <button type="button" class="seat-btn" data-seat="103">
+        <div class="office-unit-visual">
+          <div class="door-frame-mini">
+            <span class="door-plate-10won">10₩</span>
+            <div class="door-leaf-mini"></div>
+            <svg class="office-chair-svg" viewBox="0 0 64 64" fill="none">
+              <rect x="20" y="8" width="24" height="22" rx="5" fill="#9e1b1b" stroke="#e5c17b" stroke-width="2"/>
+              <rect x="16" y="32" width="32" height="8" rx="3" fill="#7f1d1d" stroke="#e5c17b" stroke-width="2"/>
+              <path d="M14 23V33H18M50 23V33H46M32 40V51M20 55H44" stroke="#e5c17b" stroke-width="2.2" stroke-linecap="round"/>
+              <circle cx="20" cy="56" r="2" fill="#e5c17b"/><circle cx="32" cy="56" r="2" fill="#e5c17b"/><circle cx="44" cy="56" r="2" fill="#e5c17b"/>
+            </svg>
+          </div>
+        </div>
+        <span class="seat-label">103</span>
+      </button>
+
+      <button type="button" class="seat-btn" data-seat="107">
+        <div class="office-unit-visual">
+          <div class="door-frame-mini">
+            <span class="door-plate-10won">10₩</span>
+            <div class="door-leaf-mini"></div>
+            <svg class="office-chair-svg" viewBox="0 0 64 64" fill="none">
+              <rect x="20" y="8" width="24" height="22" rx="5" fill="#9e1b1b" stroke="#e5c17b" stroke-width="2"/>
+              <rect x="16" y="32" width="32" height="8" rx="3" fill="#7f1d1d" stroke="#e5c17b" stroke-width="2"/>
+              <path d="M14 23V33H18M50 23V33H46M32 40V51M20 55H44" stroke="#e5c17b" stroke-width="2.2" stroke-linecap="round"/>
+              <circle cx="20" cy="56" r="2" fill="#e5c17b"/><circle cx="32" cy="56" r="2" fill="#e5c17b"/><circle cx="44" cy="56" r="2" fill="#e5c17b"/>
+            </svg>
+          </div>
+        </div>
+        <span class="seat-label">107</span>
+      </button>
+
+      <button type="button" class="seat-btn" data-seat="108">
+        <div class="office-unit-visual">
+          <div class="door-frame-mini">
+            <span class="door-plate-10won">10₩</span>
+            <div class="door-leaf-mini"></div>
+            <svg class="office-chair-svg" viewBox="0 0 64 64" fill="none">
+              <rect x="20" y="8" width="24" height="22" rx="5" fill="#9e1b1b" stroke="#e5c17b" stroke-width="2"/>
+              <rect x="16" y="32" width="32" height="8" rx="3" fill="#7f1d1d" stroke="#e5c17b" stroke-width="2"/>
+              <path d="M14 23V33H18M50 23V33H46M32 40V51M20 55H44" stroke="#e5c17b" stroke-width="2.2" stroke-linecap="round"/>
+              <circle cx="20" cy="56" r="2" fill="#e5c17b"/><circle cx="32" cy="56" r="2" fill="#e5c17b"/><circle cx="44" cy="56" r="2" fill="#e5c17b"/>
+            </svg>
+          </div>
+        </div>
+        <span class="seat-label">108</span>
+      </button>
+
+      <button type="button" class="seat-btn" data-seat="109">
+        <div class="office-unit-visual">
+          <div class="door-frame-mini">
+            <span class="door-plate-10won">10₩</span>
+            <div class="door-leaf-mini"></div>
+            <svg class="office-chair-svg" viewBox="0 0 64 64" fill="none">
+              <rect x="20" y="8" width="24" height="22" rx="5" fill="#9e1b1b" stroke="#e5c17b" stroke-width="2"/>
+              <rect x="16" y="32" width="32" height="8" rx="3" fill="#7f1d1d" stroke="#e5c17b" stroke-width="2"/>
+              <path d="M14 23V33H18M50 23V33H46M32 40V51M20 55H44" stroke="#e5c17b" stroke-width="2.2" stroke-linecap="round"/>
+              <circle cx="20" cy="56" r="2" fill="#e5c17b"/><circle cx="32" cy="56" r="2" fill="#e5c17b"/><circle cx="44" cy="56" r="2" fill="#e5c17b"/>
+            </svg>
+          </div>
+        </div>
+        <span class="seat-label">109</span>
+      </button>
+    </div>
+
+    <div class="status-banner" id="status-banner">
+      ▲ 원하시는 호실 문 한 곳을 클릭해 주세요
+    </div>
+  </div>
+</section>
+
+<!-- SEC 3: WINNER TICKET & LEAD FORM -->
+<section id="result-section" class="result-section">
+  <div class="result-card">
+    <div class="sec-tag">CONGRATULATIONS!</div>
+    <h2 class="congrats-title">축하합니다! <span>[10원 오피스]</span><br>특별 초청 주인공으로 선정되셨습니다!</h2>
+
+    <!-- Vintage Ticket -->
+    <div class="vintage-ticket">
+      <div class="ticket-main">
+        <div class="ticket-header">
+          <span>10TH ANNIVERSARY PREMIERE</span>
+          <span>ADMIT ONE</span>
+        </div>
+        <div class="ticket-title">10원 오피스 VIP 초대권</div>
+        <div class="ticket-sub">1개월 임대료 10원 특별 입주 프로모션 티켓</div>
+        <div class="ticket-meta">
+          <div>
+            <span>SELECTED OFFICE</span>
+            <strong id="ticket-seat">101</strong>
+          </div>
+          <div>
+            <span>BENEFIT</span>
+            <strong>1 MONTH / 10₩</strong>
+          </div>
+          <div>
+            <span>VALID UNTIL</span>
+            <strong>TODAY 24:00</strong>
+          </div>
+        </div>
+      </div>
+      <div class="ticket-stub">
+        <div class="stub-vip">VIP PASS</div>
+        <div class="stub-no" id="ticket-serial">NO.2026-10TH-084</div>
+        <div class="barcode"></div>
+      </div>
+    </div>
+
+    <!-- Urgency Timer -->
+    <div class="urgency-box">
+      <span>⏳ 발급된 티켓 유효시간 (오늘 자정 만료) :</span>
+      <span class="timer" id="countdown-timer">00:00:00</span>
+    </div>
+
+    <!-- Lead Form (입주희망시기 제외, 구글 시트 열과 1:1 매칭) -->
+    <form class="lead-form" id="lead-form">
+      <div class="form-group">
+        <label for="company-name">회사명 또는 대표님 성함 *</label>
+        <input type="text" id="company-name" placeholder="예: (주)스포트라이트 / 김민수" required>
+      </div>
+
+      <div class="form-group">
+        <label for="phone-number">연락처 (티켓 번호 문자 발송용) *</label>
+        <input type="tel" id="phone-number" placeholder="010-0000-0000" required>
+      </div>
+
+      <div class="form-group">
+        <label>희망 입주 인원 *</label>
+        <div class="chip-group">
+          <label class="chip-option">
+            <input type="radio" name="headcount" value="1~2인" checked>
+            <span>1~2인</span>
+          </label>
+          <label class="chip-option">
+            <input type="radio" name="headcount" value="3~5인">
+            <span>3~5인</span>
+          </label>
+          <label class="chip-option">
+            <input type="radio" name="headcount" value="6~10인">
+            <span>6~10인</span>
+          </label>
+          <label class="chip-option">
+            <input type="radio" name="headcount" value="11인 이상">
+            <span>11인 이상</span>
+          </label>
+        </div>
+      </div>
+
+      <label class="agree-box">
+        <input type="checkbox" required checked>
+        <span>[필수] 프로모션 티켓 발송 및 입주 상담을 위한 개인정보 수집·이용에 동의합니다.</span>
+      </label>
+
+      <button type="submit" class="submit-btn">내 10원 티켓 확정하고 문자 받기</button>
+    </form>
+  </div>
+</section>
+
+<!-- SEC 4: 10 YEARS MOMENTS ARCHIVE -->
+<section class="moments-section" aria-label="10년의 순간들">
+  <div class="sec-tag">10 YEARS ARCHIVE · THE HISTORY</div>
+  <h2 class="sec-title">10년의 필름 속에 기록된 성장의 순간들</h2>
+  <p class="moments-intro">
+    작은 책상 하나에서 시작된 스타트업이 업계의 주연이 되기까지, 우리가 함께 만든 10년의 기록입니다.
+  </p>
+
+  <div class="film-reel-container">
+    <div class="film-strip-bar top" aria-hidden="true">
+      <div class="film-sprocket-track"></div>
+    </div>
+
+    <div class="film-frames-grid">
+      <article class="moment-card">
+        <div class="moment-scene">
+          <span>SCENE #01 · CRANK-IN</span>
+          <span>2016</span>
+        </div>
+        <h3 class="moment-title">1호점 <span>첫 개관</span></h3>
+        <p class="moment-desc">
+          “초기 창업가의 밤낮없는 열정이 머무는 공간”이라는 철학으로 첫 번째 오피스 필름을 돌리기 시작했습니다.
+        </p>
+      </article>
+
+      <article class="moment-card">
+        <div class="moment-scene">
+          <span>SCENE #02 · CLIMAX</span>
+          <span>2016 – 2025</span>
+        </div>
+        <h3 class="moment-title">누적 <span>1,200+</span> 입주사</h3>
+        <p class="moment-desc">
+          1인 기업부터 시리즈 투자 유치 스타트업, 강소기업까지 1,200여 개 기업의 가장 빛나는 성장 장면을 함께했습니다.
+        </p>
+      </article>
+
+      <article class="moment-card highlight-card">
+        <div class="moment-scene">
+          <span>SCENE #03 · SPECIAL</span>
+          <span>DEC 2026</span>
+        </div>
+        <h3 class="moment-title">월세 <span>10원</span> 주연 캐스팅</h3>
+        <p class="moment-desc">
+          10주년을 맞은 2026년 12월, 다음 10년의 역사를 함께 써 내려갈 새로운 주인공(대표님)을 10원에 초대합니다.
+        </p>
+      </article>
+    </div>
+
+    <div class="film-strip-bar bottom" aria-hidden="true">
+      <div class="film-sprocket-track"></div>
+    </div>
+  </div>
+</section>
+
+<!-- SEC 5: TRUST & FOOTER -->
+<footer class="trust-section">
+  <p class="trust-quote">
+    “지난 10년간 수많은 비즈니스의 시작과 성장을 함께했습니다.<br>
+    비용 걱정 없이 오직 비즈니스에만 집중할 수 있도록, 12월의 주인공을 10원에 모십니다.”
+  </p>
+  <p class="legal-note">
+    ※ 본 프로모션은 당사 기준 및 계약 조건에 따라 적용되며, 상세 혜택 및 잔여 호실 안내 등은 전담 매니저 해피콜을 통해 확정됩니다.
+  </p>
+</footer>
+
+<!-- COMPLETION MODAL -->
+<div class="modal-backdrop" id="complete-modal">
+  <div class="modal-box">
+    <h3>🎟️ VIP 티켓 등록 완료!</h3>
+    <p id="modal-msg">
+      티켓 번호가 정상적으로 귀속되었습니다.<br>
+      입력하신 연락처로 티켓 안내 문자가 발송되며, 전담 매니저가 순차적으로 연락드릴 예정입니다.
+    </p>
+    <button type="button" class="modal-close" onclick="closeModal()">확인</button>
+  </div>
+</div>
+
+<script>
+  // 1. Office Door Selection & 1.5s Dramatic Spotlight Animation
+  const seatButtons = document.querySelectorAll('.seat-btn');
+  const statusBanner = document.getElementById('status-banner');
+  const resultSection = document.getElementById('result-section');
+  const ticketSeatEl = document.getElementById('ticket-seat');
+  const ticketSerialEl = document.getElementById('ticket-serial');
+  let isAnimating = false;
+  let hasWon = false;
+
+  seatButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      if (isAnimating || hasWon) return;
+      isAnimating = true;
+
+      const selectedSeatLabel = btn.querySelector('.seat-label').textContent;
+      statusBanner.textContent = "✨ 잔여 10원 티켓 수량 및 주인공 자격 매칭 중...";
+
+      seatButtons.forEach(b => b.disabled = true);
+
+      let scanIndex = 0;
+      const scanInterval = setInterval(() => {
+        seatButtons.forEach(b => b.classList.remove('scanning'));
+        seatButtons[scanIndex % seatButtons.length].classList.add('scanning');
+        scanIndex++;
+      }, 140);
+
+      setTimeout(() => {
+        clearInterval(scanInterval);
+        seatButtons.forEach(b => b.classList.remove('scanning'));
+        btn.classList.add('winner');
+
+        const randNum = String(Math.floor(Math.random() * 89) + 11).padStart(3, '0');
+        const serial = `NO.2026-10TH-${randNum}`;
+
+        ticketSeatEl.textContent = selectedSeatLabel;
+        ticketSerialEl.textContent = serial;
+        statusBanner.textContent = `🎉 [${selectedSeatLabel}] 10원 오피스 당첨! 아래에서 티켓을 확정하세요.`;
+
+        hasWon = true;
+        isAnimating = false;
+
+        launchConfetti();
+        resultSection.style.display = 'block';
+        setTimeout(() => {
+          resultSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 250);
+      }, 1500);
+    });
+  });
+
+  // 2. Midnight Countdown Timer
+  function updateMidnightTimer() {
+    const now = new Date();
+    const midnight = new Date(now);
+    midnight.setHours(24, 0, 0, 0);
+    const diff = midnight - now;
+
+    const hours = String(Math.floor((diff / (1000 * 60 * 60)) % 24)).padStart(2, '0');
+    const minutes = String(Math.floor((diff / 1000 / 60) % 60)).padStart(2, '0');
+    const seconds = String(Math.floor((diff / 1000) % 60)).padStart(2, '0');
+
+    document.getElementById('countdown-timer').textContent = `${hours}:${minutes}:${seconds}`;
+    document.getElementById('hero-clock-h').textContent = hours;
+    document.getElementById('hero-clock-m').textContent = minutes;
+    document.getElementById('hero-clock-s').textContent = seconds;
+  }
+  setInterval(updateMidnightTimer, 1000);
+  updateMidnightTimer();
+
+  // 3. Lead Form Submission -> Google Sheets 연동
+  const GOOGLE_SCRIPT_URL = "여기에_복사한_웹앱_URL을_붙여넣으세요";
+  const leadForm = document.getElementById('lead-form');
+  const submitBtn = leadForm.querySelector('.submit-btn');
+  const modal = document.getElementById('complete-modal');
+  const modalMsg = document.getElementById('modal-msg');
+
+  leadForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById('company-name').value.trim();
+    const phone = document.getElementById('phone-number').value.trim();
+    const headcount = document.querySelector('input[name="headcount"]:checked').value;
+    const seat = ticketSeatEl.textContent;
+    const serial = ticketSerialEl.textContent;
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "티켓 등록 및 발송 중...";
+
+    try {
+      if (GOOGLE_SCRIPT_URL.startsWith("https://")) {
+        await fetch(GOOGLE_SCRIPT_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            seat: seat,
+            serial: serial,
+            companyName: name,
+            phone: phone,
+            headcount: headcount
+          })
+        });
+      }
+
+      modalMsg.innerHTML = `<strong>${name}</strong>님, 고유 티켓(<strong>${serial}</strong>) 등록이 완료되었습니다.<br><br>전담 매니저가 확인 후 순차적으로 연락드려 10원 입주 안내를 도와드리겠습니다.`;
+      modal.style.display = 'flex';
+      launchConfetti();
+      leadForm.reset();
+    } catch (err) {
+      alert("일시적인 오류가 발생했습니다. 다시 시도해 주세요.");
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "내 10원 티켓 확정하고 문자 받기";
+    }
+  });
+
+  function closeModal() {
+    modal.style.display = 'none';
+  }
+
+  // 4. Lightweight Gold & Red Confetti Effect
+  const canvas = document.getElementById('confetti-canvas');
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+
+  function launchConfetti() {
+    const colors = ['#e5c17b', '#fef08a', '#dc2626', '#9e1b1b', '#ffffff'];
+    for (let i = 0; i < 110; i++) {
+      particles.push({
+        x: canvas.width / 2 + (Math.random() - 0.5) * 200,
+        y: canvas.height / 2,
+        vx: (Math.random() - 0.5) * 16,
+        vy: (Math.random() - 1) * 16 - 4,
+        size: Math.random() * 8 + 4,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        rotation: Math.random() * 360,
+        rSpeed: (Math.random() - 0.5) * 10,
+        gravity: 0.35,
+        alpha: 1
+      });
+    }
+    if (particles.length <= 110) animateConfetti();
+  }
+
+  function animateConfetti() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach((p, i) => {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.vy += p.gravity;
+      p.rotation += p.rSpeed;
+      p.alpha -= 0.008;
+
+      ctx.save();
+      ctx.globalAlpha = Math.max(p.alpha, 0);
+      ctx.translate(p.x, p.y);
+      ctx.rotate((p.rotation * Math.PI) / 180);
+      ctx.fillStyle = p.color;
+      ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.6);
+      ctx.restore();
+
+      if (p.alpha <= 0) particles.splice(i, 1);
+    });
+
+    if (particles.length > 0) {
+      requestAnimationFrame(animateConfetti);
+    }
+  }
+</script>
+
+</body>
+</html>
