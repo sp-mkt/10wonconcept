@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>10주년 주인공 찾기 프로젝트 : <10원 오피스></title>
+<title>10주년 주인공 찾기 프로젝트 : <10원 오피스> | 스파크플러스</title>
 <style>
   @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap');
@@ -50,18 +50,91 @@
   }
 
   /* =========================================
+     0. TOP BRAND BAR (OFFICIAL TRUST HEADER)
+  ========================================= */
+  .top-brand-bar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 64px;
+    background: rgba(7, 7, 8, 0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    z-index: 1000;
+    padding: 0 24px;
+  }
+
+  .top-brand-inner {
+    max-width: 1120px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .brand-logo-link {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .brand-logo-link:hover {
+    opacity: 0.82;
+  }
+
+  .brand-logo-img {
+    height: 22px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+  }
+
+  .brand-logo-fallback {
+    display: none;
+    font-size: 1.15rem;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    color: #ffffff;
+  }
+
+  .brand-home-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #d1d5db;
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.04);
+    transition: all 0.2s ease;
+  }
+
+  .brand-home-link:hover {
+    color: var(--gold);
+    border-color: rgba(229, 193, 123, 0.45);
+    background: rgba(229, 193, 123, 0.08);
+  }
+
+  /* =========================================
      1. HERO SECTION (STRICTLY CENTERED)
   ========================================= */
   .hero {
     position: relative;
     width: 100%;
-    min-height: 92vh;
+    min-height: calc(92vh - 64px);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 72px 20px 64px;
+    padding: 64px 20px 64px;
     margin: 0 auto;
     background: radial-gradient(circle at 50% 25%, rgba(158, 27, 27, 0.38) 0%, rgba(229, 193, 123, 0.08) 38%, rgba(7, 7, 8, 1) 76%);
     overflow: hidden;
@@ -760,7 +833,7 @@
   }
 
   /* =========================================
-     AGREEMENT UI (MATCHING REFERENCE SCREENSHOT)
+     AGREEMENT UI
   ========================================= */
   .agreement-wrapper {
     margin: 22px 0 20px;
@@ -1161,6 +1234,9 @@
   }
 
   @media (max-width: 640px) {
+    .top-brand-bar { height: 56px; padding: 0 16px; }
+    .brand-logo-img { height: 18px; }
+    .brand-home-link { font-size: 0.76rem; padding: 5px 10px; }
     .rooms-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
     .vintage-ticket { flex-direction: column; }
     .vintage-ticket::before, .vintage-ticket::after { display: none; }
@@ -1172,6 +1248,30 @@
 <body>
 
 <canvas id="confetti-canvas"></canvas>
+
+<!-- SEC 0: TOP OFFICIAL BRAND BAR -->
+<header class="top-brand-bar">
+  <div class="top-brand-inner">
+    <a href="https://www.sparkplus.co/?utm_source=10won_landing&utm_medium=top_logo&utm_campaign=10th_anniversary_10won"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="brand-logo-link"
+       aria-label="스파크플러스 공식 홈페이지로 이동">
+      <img src="./스파크플러스_로고_white.png"
+           alt="SPARKPLUS"
+           class="brand-logo-img"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+      <span class="brand-logo-fallback">SPARK+PLUS</span>
+    </a>
+
+    <a href="https://www.sparkplus.co/?utm_source=10won_landing&utm_medium=top_nav&utm_campaign=10th_anniversary_10won"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="brand-home-link">
+      공식 홈페이지 ↗
+    </a>
+  </div>
+</header>
 
 <!-- SEC 1: HERO -->
 <section class="hero">
@@ -1504,7 +1604,7 @@
         </div>
       </div>
 
-      <!-- Agreement Section (Reference Screenshot UI) -->
+      <!-- Agreement Section -->
       <div class="agreement-wrapper">
         <label class="agree-all-row" for="agree-all">
           <input type="checkbox" id="agree-all" class="agree-all-checkbox" checked>
