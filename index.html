@@ -494,6 +494,7 @@
     font-size: 1.05rem;
     font-weight: 700;
     color: var(--gold);
+    line-height: 1.5;
   }
 
   /* =========================================
@@ -710,7 +711,8 @@
   }
 
   .form-group input[type="text"],
-  .form-group input[type="tel"] {
+  .form-group input[type="tel"],
+  .form-group input[type="email"] {
     width: 100%;
     padding: 14px 16px;
     background: #0d0d10;
@@ -757,20 +759,132 @@
     font-weight: 800;
   }
 
-  .agree-box {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.83rem;
-    color: #9ca3af;
-    margin: 18px 0 22px;
-    cursor: pointer;
+  /* =========================================
+     AGREEMENT UI (MATCHING REFERENCE SCREENSHOT)
+  ========================================= */
+  .agreement-wrapper {
+    margin: 22px 0 20px;
+    padding-top: 6px;
   }
 
-  .agree-box input {
-    accent-color: var(--gold);
-    width: 16px;
-    height: 16px;
+  .agree-all-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #2e2e38;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .agree-all-checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 7px;
+    border: 1.5px solid #4b5563;
+    background: #0d0d10;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+  }
+
+  .agree-all-checkbox:checked {
+    background: var(--gold);
+    border-color: var(--gold);
+  }
+
+  .agree-all-checkbox:checked::after {
+    content: "";
+    width: 6px;
+    height: 11px;
+    border: solid #0a0a0a;
+    border-width: 0 2.5px 2.5px 0;
+    transform: rotate(45deg);
+    margin-bottom: 2px;
+  }
+
+  .agree-all-text {
+    font-size: 1.02rem;
+    font-weight: 800;
+    color: #ffffff;
+  }
+
+  .agree-sub-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-top: 14px;
+  }
+
+  .agree-sub-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .agree-sub-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    user-select: none;
+    flex: 1;
+  }
+
+  .agree-sub-checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 24px;
+    height: 24px;
+    background: transparent;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .agree-sub-checkbox::after {
+    content: "";
+    width: 7px;
+    height: 12px;
+    border: solid #52525b;
+    border-width: 0 2.2px 2.2px 0;
+    transform: rotate(45deg);
+    margin-bottom: 3px;
+    transition: border-color 0.2s ease;
+  }
+
+  .agree-sub-checkbox:checked::after {
+    border-color: var(--gold);
+  }
+
+  .agree-sub-text {
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: #d1d5db;
+  }
+
+  .agree-detail-btn {
+    background: none;
+    border: none;
+    color: #9ca3af;
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding: 4px 8px;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+
+  .agree-detail-btn:hover {
+    color: var(--gold);
   }
 
   .submit-btn {
@@ -784,7 +898,7 @@
     border-radius: 12px;
     cursor: pointer;
     box-shadow: 0 10px 25px rgba(229, 193, 123, 0.3);
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: all 0.2s ease;
   }
 
   .submit-btn:hover:not(:disabled) {
@@ -793,8 +907,19 @@
   }
 
   .submit-btn:disabled {
-    opacity: 0.7;
+    background: #27272f;
+    color: #71717a;
+    box-shadow: none;
     cursor: not-allowed;
+    transform: none;
+  }
+
+  .marketing-footnote {
+    margin-top: 12px;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #9ca3af;
+    word-break: keep-all;
   }
 
   /* =========================================
@@ -962,7 +1087,7 @@
     word-break: keep-all;
   }
 
-  /* Completion Modal */
+  /* Modals (Completion & Terms) */
   .modal-backdrop {
     display: none;
     position: fixed;
@@ -978,23 +1103,38 @@
     background: #18181c;
     border: 1px solid var(--gold);
     border-radius: 20px;
-    max-width: 420px;
+    max-width: 440px;
     width: 100%;
-    padding: 36px 28px;
+    padding: 32px 26px;
     text-align: center;
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.9);
   }
 
   .modal-box h3 {
-    font-size: 1.5rem;
+    font-size: 1.35rem;
     color: var(--gold);
-    margin-bottom: 12px;
+    margin-bottom: 14px;
   }
 
   .modal-box p {
     color: #e5e7eb;
-    font-size: 0.95rem;
+    font-size: 0.94rem;
     margin-bottom: 24px;
+    word-break: keep-all;
+  }
+
+  .terms-body {
+    text-align: left;
+    background: #101014;
+    border: 1px solid #2b2b34;
+    border-radius: 10px;
+    padding: 16px;
+    font-size: 0.84rem;
+    color: #d1d5db;
+    line-height: 1.6;
+    max-height: 240px;
+    overflow-y: auto;
+    margin-bottom: 20px;
     word-break: keep-all;
   }
 
@@ -1338,6 +1478,11 @@
       </div>
 
       <div class="form-group">
+        <label for="email-address">이메일 주소 *</label>
+        <input type="email" id="email-address" placeholder="example@company.com" required>
+      </div>
+
+      <div class="form-group">
         <label>희망 입주 인원 *</label>
         <div class="chip-group">
           <label class="chip-option">
@@ -1359,12 +1504,34 @@
         </div>
       </div>
 
-      <label class="agree-box">
-        <input type="checkbox" required checked>
-        <span>[필수] 프로모션 안내 및 입주 상담을 위한 개인정보 수집·이용에 동의합니다.</span>
-      </label>
+      <!-- Agreement Section (Reference Screenshot UI) -->
+      <div class="agreement-wrapper">
+        <label class="agree-all-row" for="agree-all">
+          <input type="checkbox" id="agree-all" class="agree-all-checkbox" checked>
+          <span class="agree-all-text">전체 동의</span>
+        </label>
 
-      <button type="submit" class="submit-btn">10원 오피스 입주권 발권하기</button>
+        <div class="agree-sub-list">
+          <div class="agree-sub-item">
+            <label class="agree-sub-label" for="agree-privacy">
+              <input type="checkbox" id="agree-privacy" class="agree-sub-checkbox" required checked>
+              <span class="agree-sub-text">[필수] 개인정보 수집 및 이용 동의</span>
+            </label>
+            <button type="button" class="agree-detail-btn" onclick="openTermsModal('privacy')" aria-label="개인정보 수집 및 이용 동의 상세보기">></button>
+          </div>
+
+          <div class="agree-sub-item">
+            <label class="agree-sub-label" for="agree-marketing">
+              <input type="checkbox" id="agree-marketing" class="agree-sub-checkbox" required checked>
+              <span class="agree-sub-text">[필수] 마케팅 정보 수집 및 이용 동의</span>
+            </label>
+            <button type="button" class="agree-detail-btn" onclick="openTermsModal('marketing')" aria-label="마케팅 정보 수집 및 이용 동의 상세보기">></button>
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="submit-btn" id="submit-btn">10원 오피스 입주권 발권하기</button>
+      <p class="marketing-footnote">*마케팅 활용 동의를 하신 분들만 혜택을 받을 수 있어요</p>
     </form>
   </div>
 </section>
@@ -1438,7 +1605,16 @@
       티켓 번호가 정상적으로 귀속되었습니다.<br>
       입력하신 연락처로 전담 매니저가 연락드릴 예정입니다.
     </p>
-    <button type="button" class="modal-close" onclick="closeModal()">확인</button>
+    <button type="button" class="modal-close" onclick="closeModal('complete-modal')">확인</button>
+  </div>
+</div>
+
+<!-- TERMS DETAIL MODAL -->
+<div class="modal-backdrop" id="terms-modal">
+  <div class="modal-box">
+    <h3 id="terms-title">약관 상세 안내</h3>
+    <div class="terms-body" id="terms-content"></div>
+    <button type="button" class="modal-close" onclick="closeModal('terms-modal')">닫기</button>
   </div>
 </div>
 
@@ -1479,7 +1655,7 @@
 
         ticketRoomEl.textContent = selectedRoomLabel;
         ticketSerialEl.textContent = serial;
-        statusBanner.textContent = `🎉 [${selectedRoomLabel}] 10원 오피스 문이 열렸습니다!<br>아래에서 입주를 문의하세요.`;
+        statusBanner.innerHTML = `🎉 [${selectedRoomLabel}] 10원 오피스 문이 열렸습니다!<br>아래에서 입주를 문의하세요.`;
 
         hasWon = true;
         isAnimating = false;
@@ -1521,18 +1697,80 @@
   setInterval(updateMidnightTimer, 1000);
   updateMidnightTimer();
 
-  // 3. Lead Form Submission -> Google Sheets 연동 (Form Data 방식)
+  // 3. Agreement Checkbox Synchronization & Button State
+  const agreeAll = document.getElementById('agree-all');
+  const agreePrivacy = document.getElementById('agree-privacy');
+  const agreeMarketing = document.getElementById('agree-marketing');
+  const submitBtn = document.getElementById('submit-btn');
+
+  function syncAgreementState() {
+    const allChecked = agreePrivacy.checked && agreeMarketing.checked;
+    agreeAll.checked = allChecked;
+    submitBtn.disabled = !allChecked;
+  }
+
+  agreeAll.addEventListener('change', () => {
+    agreePrivacy.checked = agreeAll.checked;
+    agreeMarketing.checked = agreeAll.checked;
+    syncAgreementState();
+  });
+
+  agreePrivacy.addEventListener('change', syncAgreementState);
+  agreeMarketing.addEventListener('change', syncAgreementState);
+  syncAgreementState();
+
+  // Terms Detail Modal
+  function openTermsModal(type) {
+    const titleEl = document.getElementById('terms-title');
+    const contentEl = document.getElementById('terms-content');
+
+    if (type === 'privacy') {
+      titleEl.textContent = '[필수] 개인정보 수집 및 이용 동의';
+      contentEl.innerHTML = `
+        <strong>1. 수집 및 이용 목적</strong><br>
+        스파크플러스 10주년 <10원 오피스> 프로모션 티켓 발권 확인, 입주 상담 안내 및 해피콜 진행<br><br>
+        <strong>2. 수집하는 개인정보 항목</strong><br>
+        성함(또는 회사명), 연락처, 이메일 주소, 희망 입주 인원<br><br>
+        <strong>3. 보유 및 이용 기간</strong><br>
+        상담 종료 후 1년 또는 정보주체의 동의 철회 요청 시 즉시 파기 (단, 관계 법령에 따라 보존할 필요가 있는 경우 해당 기간 동안 보관)<br><br>
+        ※ 귀하는 개인정보 수집 및 이용에 대한 동의를 거부할 권리가 있으나, 미동의 시 프로모션 참여 및 입주권 발권이 제한됩니다.
+      `;
+    } else {
+      titleEl.textContent = '[필수] 마케팅 정보 수집 및 이용 동의';
+      contentEl.innerHTML = `
+        <strong>1. 수집 및 이용 목적</strong><br>
+        스파크플러스 10원 오피스 프로모션 혜택 제공, 지점별 입주 프로모션 및 이벤트 안내, 맞춤형 오피스 상품 정보 발송<br><br>
+        <strong>2. 수집 항목 및 전송 매체</strong><br>
+        성함(또는 회사명), 연락처, 이메일 주소를 통한 문자(SMS/LMS/알림톡), 이메일, 전화 안내<br><br>
+        <strong>3. 보유 및 이용 기간</strong><br>
+        동의 철회 시까지 보유 및 이용<br><br>
+        ※ 본 프로모션은 마케팅 활용 동의를 완료하신 분에 한해 혜택이 제공되며, 동의 후 언제든 수신 거부를 통해 철회하실 수 있습니다.
+      `;
+    }
+    document.getElementById('terms-modal').style.display = 'flex';
+  }
+
+  function closeModal(modalId) {
+    document.getElementById(modalId).style.display = 'none';
+  }
+
+  // 4. Lead Form Submission -> Google Sheets 연동 (Form Data 방식)
   const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwKe-doZfI8kIXVEbbfdF7EbNdcWouBQ53236KcItpZozdt4MzSPtFWpge8dy9t-Lhf/exec";
   const leadForm = document.getElementById('lead-form');
-  const submitBtn = leadForm.querySelector('.submit-btn');
   const modal = document.getElementById('complete-modal');
   const modalMsg = document.getElementById('modal-msg');
 
   leadForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
+    if (!agreePrivacy.checked || !agreeMarketing.checked) {
+      alert("필수 약관에 모두 동의해 주세요.");
+      return;
+    }
+
     const name = document.getElementById('company-name').value.trim();
     const phone = document.getElementById('phone-number').value.trim();
+    const email = document.getElementById('email-address').value.trim();
     const headcount = document.querySelector('input[name="headcount"]:checked').value;
     const room = ticketRoomEl.textContent;
     const serial = ticketSerialEl.textContent;
@@ -1545,7 +1783,9 @@
     formData.append("serial", serial);
     formData.append("companyName", name);
     formData.append("phone", phone);
+    formData.append("email", email);
     formData.append("headcount", headcount);
+    formData.append("marketingAgree", agreeMarketing.checked ? "Y" : "N");
 
     try {
       await fetch(GOOGLE_SCRIPT_URL, {
@@ -1562,10 +1802,11 @@
     } finally {
       submitBtn.disabled = false;
       submitBtn.textContent = "10원 오피스 입주권 발권하기";
+      syncAgreementState();
     }
   });
 
-  // 4. Lightweight Gold & Red Confetti Effect
+  // 5. Lightweight Gold & Red Confetti Effect
   const canvas = document.getElementById('confetti-canvas');
   const ctx = canvas.getContext('2d');
   let particles = [];
